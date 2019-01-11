@@ -18,7 +18,6 @@ const styles = () => ({
 })
 
 const ControllerText = ({ classes }) => {
-    console.log(classes)
     return <div>
         <Typography className={classes.title}>
             Color Settings

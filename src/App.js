@@ -7,7 +7,7 @@ import NavBar from './navigation/NavBar'
 import Landing from './scenes/landing/containers/Landing'
 import Login from './scenes/login/Login'
 import Controller from './scenes/controller/containers/Controller'
-import API from './API'
+import API from './APIs/API'
 
 
 class App extends Component {

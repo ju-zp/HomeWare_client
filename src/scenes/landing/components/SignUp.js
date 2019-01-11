@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
-import API from '../../../API'
+import API from '../../../APIs/API'
 
 const styles = () => ({
     text: {
