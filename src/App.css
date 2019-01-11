@@ -3,9 +3,14 @@
    color: white;
 }
 
-.title {
+.mainTitle {
   color: white;
   margin-right: 45%;
+}
+
+.title {
+  color: white;
+  margin-right: 39%
 }
 
 .form {

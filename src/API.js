@@ -29,6 +29,8 @@ class API {
           body: JSON.stringify({ username: username })
         }).then(resp => resp.json())
       }
-
-
 }
+
+API.init()
+
+export default API

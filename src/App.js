@@ -7,38 +7,39 @@ import NavBar from './navigation/NavBar'
 import Landing from './scenes/landing/containers/Landing'
 import Login from './scenes/login/Login'
 import Controller from './scenes/controller/containers/Controller'
-
+import API from './API'
 
 
 class App extends Component {
 
   state = {
-    username: ''
+    username: '',
+    page: ''
   }
 
 
   logIn = username => {
     localStorage.setItem('username', username)
-    this.setState({ username })
+    this.setState({ username, page: 'Controller' })
   }
 
   logOut = () => {
     localStorage.removeItem('username')
-    this.setState({ username: '' })
+    this.setState({ username: '', page: '' })
     this.props.history.push('/')
   }
  
   componentDidMount(){
     const username = localStorage.username
     if(username){
-      this.props.history.push('/controller')
-      // API.validate(username)
-      //   .then(resp => {
-      //     if(!resp.error){
-      //       this.logIn(username)
-      //       this.props.history.push('/news')
-      //     }
-      //   })
+      API.validate(username)
+        .then(resp => {
+          if(!resp.error){
+            this.logIn(username)
+            this.setState({page: 'Controller'})
+            this.props.history.push('/controller')
+          }
+        })
     } else{
       this.props.history.push('/')
     }
@@ -46,10 +47,11 @@ class App extends Component {
 
   render() {
     const { logIn, logOut, props } = this
+    const { username, page } = this.state 
     return (
       <MuiThemeProvider>
         <div>
-          <NavBar />
+          <NavBar username={username} logOut={logOut} page={page}/>
           <Route exact path='/' component={() => <Landing {...props} logIn={logIn}/>}/>
           <Route exact path='/login' component={() => <Login {...props} logIn={logIn}/>}/>
           <Route exact path='/controller' component={() => <Controller  />}/>
