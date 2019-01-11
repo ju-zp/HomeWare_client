@@ -24,6 +24,15 @@
   margin: auto;
 }
 
+.controller {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.controllerText {
+  font-size: 20;
+}
+
 .loginLink {
   margin-top: 10%;
   text-align: center;

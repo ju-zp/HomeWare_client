@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
+import { Typography, Switch } from '@material-ui/core'
+
+import LightSwitch from '../components/LightSwitch';
+import ColorSettings from '../components/ColorSettings';
+import TemperatureInterval from '../components/TemperatureInterval';
+import AmbientSwitch from '../components/AmbientSwitch';
 
 
 class Controller extends Component {
 
-    componentWillMount(){
-    //    this.props.auth.test()
-    }
-
     render(){
-        return <h1>Hello</h1>
+        return <div className="controller">
+            <LightSwitch/>
+            <ColorSettings/>
+            <TemperatureInterval/>
+            <AmbientSwitch/>
+
+        </div>
     }
 }
 
