@@ -1,28 +1,61 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, withRouter } from 'react-router-dom'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+import NavBar from './navigation/NavBar'
+import Landing from './scenes/landing/containers/Landing'
+import Login from './scenes/login/Login'
+import Controller from './scenes/controller/containers/Controller'
+
 
 class App extends Component {
+
+  state = {
+    username: ''
+  }
+
+
+  logIn = username => {
+    localStorage.setItem('username', username)
+    this.setState({ username })
+  }
+
+  logOut = () => {
+    localStorage.removeItem('username')
+    this.setState({ username: '' })
+    this.props.history.push('/')
+  }
+ 
+  componentDidMount(){
+    const username = localStorage.username
+    if(username){
+      this.props.history.push('/controller')
+      // API.validate(username)
+      //   .then(resp => {
+      //     if(!resp.error){
+      //       this.logIn(username)
+      //       this.props.history.push('/news')
+      //     }
+      //   })
+    } else{
+      this.props.history.push('/')
+    }
+  }
+
   render() {
+    const { logIn, logOut, props } = this
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <NavBar />
+          <Route exact path='/' component={() => <Landing {...props} logIn={logIn}/>}/>
+          <Route exact path='/login' component={() => <Login {...props} logIn={logIn}/>}/>
+          <Route exact path='/controller' component={() => <Controller  />}/>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

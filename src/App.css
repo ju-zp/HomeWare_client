@@ -1,6 +1,44 @@
-.App {
+.app {
+  text-align: center;
+   color: white;
+}
+
+.title {
+  color: white;
+  margin-right: 45%;
+}
+
+.form {
+  background-color: #D3D3D3;
+  border-radius: 25px;
+  margin: 20px;
+  width: 40%;
+  right: 27%;
+  border: 3px solid #004857;
+  padding: 10px;
+  margin: auto;
+}
+
+.loginLink {
+  margin-top: 10%;
   text-align: center;
 }
+
+.loginLink a {
+  color: white;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 7px 30px;
+  border-radius: 3px;
+}
+
+.loginLink a:hover {
+  color: #004E59;
+  border-color: #004E59;
+  background-color: white;
+  transition: background-color 0.5s ease;
+}
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
