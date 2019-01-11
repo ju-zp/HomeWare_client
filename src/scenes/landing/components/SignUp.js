@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-
-
-
 import { FormControl, TextField, Button } from '@material-ui/core';
+
+import API from './API'
 
 const styles = () => ({
     button: {
@@ -28,6 +27,13 @@ class SignUp extends Component {
     }
 
     handleLogIn = async e => {
+        let resp
+        if(this.props.title === 'Log In'){
+            resp = await API.login(this.state)
+        } else {
+            resp = await API.signup(this.state)
+        }
+        // console.log(resp)
         // const resp = await API.login(this.state)
         // if(resp.error){
         //   console.log(resp.error)
