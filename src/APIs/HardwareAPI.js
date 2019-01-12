@@ -3,6 +3,7 @@ class HardWareAPI {
          this.baseURL = "http://127.0.0.1:3002"
          this.switchOnURL = this.baseURL + '/switchOn'
          this.switchOffURL = this.baseURL + '/switchOff'
+         this.setColorURL = this.baseURL + '/setColor'
      }
 
      static switchOn(){
@@ -11,6 +12,14 @@ class HardWareAPI {
 
      static switchOff(){
          fetch(this.switchOffURL)
+     }
+
+     static setColor(color){
+         fetch(this.setColorURL, {
+            method: "PATCH",
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(color) 
+         })
      }
 }
 

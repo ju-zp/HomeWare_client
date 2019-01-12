@@ -22,7 +22,7 @@ class ColorSlider extends Component {
     }
 
     render(){
-        const { classes, color} = this.props
+        const { classes } = this.props
         const { handleChange } = this
         return <Slider className={classes.slider}
             max={255}
