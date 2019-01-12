@@ -19,14 +19,18 @@ class Controller extends Component {
             HardwareAPI.switchOn()
         } else {
             HardwareAPI.switchOff()
-        }
-        
+        } 
     } 
 
+    handleSlider = data => {
+        console.log(data)
+    }
+
     render(){
+        const { handleSwitch, handleSlider } = this 
         return <div className="controller">
-            <LightSwitch handleSwitch={this.handleSwitch}/>
-            <ColorSettings/>
+            <LightSwitch handleSwitch={handleSwitch}/>
+            <ColorSettings handleSlider={handleSlider}/>
             <TemperatureInterval/>
             <AmbientSwitch/>
 

@@ -17,7 +17,7 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes }) => {
+const ControllerText = ({ classes, handleSlider }) => {
     return <div>
         <Typography className={classes.title}>
             Color Settings
@@ -25,15 +25,15 @@ const ControllerText = ({ classes }) => {
         <Typography className={classes.text}>
             Red
         </Typography>
-        <ColorSlider/>
+        <ColorSlider handleSlider={handleSlider} color="red"/>
         <Typography className={classes.text}>
             Blue
         </Typography>
-        <ColorSlider/>
+        <ColorSlider handleSlider={handleSlider} color="blue"/>
         <Typography className={classes.text}>
             Green
         </Typography>
-        <ColorSlider/>
+        <ColorSlider handleSlider={handleSlider} color="green"/>
     </div>
 }
 
