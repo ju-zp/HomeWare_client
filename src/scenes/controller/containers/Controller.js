@@ -11,23 +11,28 @@ import HardwareAPI from '../../../APIs/HardwareAPI'
 class Controller extends Component {
 
     state = {
+        on: false,
         red: 255,
         green: 255,
         blue: 255
     }
 
     handleSwitch = (val) => {
+        this.setState({on: val})
         if(val){
-            HardwareAPI.switchOn()
+            HardwareAPI.setColor(this.state)
         } else {
             HardwareAPI.switchOff()
         } 
     } 
 
     handleSlider = data => {
-        console.log(data)
         this.setState({[data.color]: data.value})
-        HardwareAPI.setColor(this.state)
+        if(this.state.on){
+            HardwareAPI.setColor(this.state)
+        }
+        
+        
     }
 
     render(){
