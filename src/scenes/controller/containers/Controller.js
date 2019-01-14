@@ -31,16 +31,19 @@ class Controller extends Component {
         if(this.state.on){
             HardwareAPI.setColor(this.state)
         }
-        
-        
+    }
+
+    handleTemperature = () => {
+        console.log("hello")
+        HardwareAPI.getTemperature()
     }
 
     render(){
-        const { handleSwitch, handleSlider } = this 
+        const { handleSwitch, handleSlider, handleTemperature } = this 
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}/>
-            <TemperatureInterval/>
+            <TemperatureInterval handleTemperature={handleTemperature}/>
             <AmbientSwitch/>
 
         </div>

@@ -15,14 +15,14 @@ const styles = () => ({
     
 })
 
-const TemperatureInterval = ({ classes }) => {
+const TemperatureInterval = ({ classes, handleTemperature }) => {
     return <div>
         <Typography className={classes.title}>
             Temperature
         </Typography>
         <TextField>
         </TextField>
-        <Button>Set</Button>
+        <Button onClick={handleTemperature}>Set</Button>
     </div>
 }
 
