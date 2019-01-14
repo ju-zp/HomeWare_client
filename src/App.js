@@ -15,7 +15,7 @@ class App extends Component {
 
   state = {
     username: '',
-    page: ''
+    page: '',
   }
 
 
