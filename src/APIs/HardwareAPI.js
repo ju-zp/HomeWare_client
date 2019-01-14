@@ -12,7 +12,7 @@ class HardWareAPI {
         fetch(this.welcomeURL, {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
-            body: username
+            body: JSON.stringify({username})
         })
     }
 
