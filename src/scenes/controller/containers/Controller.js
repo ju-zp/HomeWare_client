@@ -44,8 +44,9 @@ class Controller extends Component {
 
     handleTemperatureInterval = time => {
         this.setState({interval: setInterval(() => {
-            console.log(HardwareAPI.getTemperature())
-
+            reading = HardwareAPI.getTemperature()
+            console.log(reading)
+            API.reading(localStorage.username, reading.reading)
             }, time * 1000),
             intervalVal: time})
         console.log('hello')
