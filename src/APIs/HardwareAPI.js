@@ -6,6 +6,7 @@ class HardWareAPI {
         this.switchOffURL = this.baseURL + '/switchOff'
         this.setColorURL = this.baseURL + '/setColor'
         this.tempReadingURL = this.baseURL + '/temperature'
+        this.signoutURL = this.baseURL + '/logout'
     }
 
     static welcome(username){
@@ -35,6 +36,10 @@ class HardWareAPI {
     static getTemperature(){
         return fetch(this.tempReadingURL)
             .then(data => data.json())
+    }
+
+    static logout(){
+        fetch(this.signoutURL)
     }
 }
 
