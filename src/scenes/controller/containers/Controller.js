@@ -12,38 +12,52 @@ class Controller extends Component {
 
     state = {
         on: false,
-        red: 255,
-        green: 255,
-        blue: 255
+        color: {
+            red: 255,
+            green: 255,
+            blue: 255
+        },
+        interval: null,
+        intervalVal: 0
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.state.interval)
     }
 
     handleSwitch = (val) => {
         this.setState({on: val})
         if(val){
-            HardwareAPI.setColor(this.state)
+            HardwareAPI.setColor(this.state.color)
         } else {
             HardwareAPI.switchOff()
         } 
     } 
 
     handleSlider = data => {
-        this.setState({[data.color]: data.value})
+        this.setState({color: {...this.state.color,[data.color]: data.value}})
         if(this.state.on){
-            HardwareAPI.setColor(this.state)
+            HardwareAPI.setColor(this.state.color)
         }
     }
 
-    handleTemperature = () => {
-        console.log("hello")
-        HardwareAPI.getTemperature()
+    handleTemperatureInterval = time => {
+        this.setState({interval: setInterval(() => {
+            console.log(HardwareAPI.getTemperature())
+            }, time * 1000),
+            intervalVal: time})
+        console.log('hello')
+        console.log(time)
     }
 
     render(){
-        const { handleSwitch, handleSlider, handleTemperature } = this 
+        const { handleSwitch, handleSlider, handleTemperatureInterval } = this
+        const { intervalVal } = this.state
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}/>
-            <TemperatureInterval handleTemperature={handleTemperature}/>
+            <TemperatureInterval intervalValue={intervalVal} 
+                temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>
 
         </div>
