@@ -1,6 +1,5 @@
 import React from'react'
-import { Typography, withStyles, Switch } from '@material-ui/core';
-import Slider from '@material-ui/lab/Slider'
+import { Typography, withStyles} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 
 const styles = () => ({
