@@ -18,7 +18,8 @@ class Controller extends Component {
             blue: 255
         },
         interval: null,
-        intervalVal: 0
+        intervalVal: 0, 
+        save: false
     }
 
     componentWillUnmount(){
