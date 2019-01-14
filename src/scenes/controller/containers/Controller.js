@@ -16,7 +16,8 @@ class Controller extends Component {
             red: 255,
             green: 255,
             blue: 255
-        }
+        },
+        interval: null
     }
 
     handleSwitch = (val) => {
