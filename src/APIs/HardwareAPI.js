@@ -7,6 +7,10 @@ class HardWareAPI {
         this.tempReadingURL = this.baseURL + '/temperature'
     }
 
+    static welcome({
+        fetch(this.welcomeURL)
+    })
+
     static switchOn(){
         fetch(this.switchOnURL)
     }
