@@ -37,10 +37,11 @@ class TemperatureInterval extends Component {
             <TextField>
             </TextField>
             <Select onChange={handleChange}
+                value={this.state.time}
                 inputProps={{
                     name: 'time'
                 }}>
-                <MenuItem value="">--None--</MenuItem>
+                <MenuItem value={0}>--None--</MenuItem>
                 <MenuItem value={0.5}>30 Seconds</MenuItem>
                 <MenuItem value={1}>1 Minute</MenuItem>
                 <MenuItem value={30}>30 Minutes</MenuItem>
