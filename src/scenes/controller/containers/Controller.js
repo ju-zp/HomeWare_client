@@ -29,7 +29,7 @@ class Controller extends Component {
     } 
 
     handleSlider = data => {
-        this.setState({color: {[data.color]: data.value}})
+        this.setState({color: {...this.state.color,[data.color]: data.value}})
         if(this.state.on){
             HardwareAPI.setColor(this.state.color)
         }
