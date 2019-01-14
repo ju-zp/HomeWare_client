@@ -42,9 +42,9 @@ class Controller extends Component {
     }
 
     handleTemperatureInterval = time => {
-        // setInterval(() => {
-        //     HardwareAPI.getTemperature()
-        // }, )
+        setInterval(() => {
+            console.log(HardwareAPI.getTemperature())
+        }, time * 1000)
         console.log('hello')
         console.log(time)
     }
