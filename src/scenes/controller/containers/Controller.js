@@ -12,24 +12,26 @@ class Controller extends Component {
 
     state = {
         on: false,
-        red: 255,
-        green: 255,
-        blue: 255
+        color: {
+            red: 255,
+            green: 255,
+            blue: 255
+        }
     }
 
     handleSwitch = (val) => {
         this.setState({on: val})
         if(val){
-            HardwareAPI.setColor(this.state)
+            HardwareAPI.setColor(this.state.color)
         } else {
             HardwareAPI.switchOff()
         } 
     } 
 
     handleSlider = data => {
-        this.setState({[data.color]: data.value})
+        this.setState({color: {...this.state.color,[data.color]: data.value}})
         if(this.state.on){
-            HardwareAPI.setColor(this.state)
+            HardwareAPI.setColor(this.state.color)
         }
     }
 
@@ -38,12 +40,18 @@ class Controller extends Component {
         HardwareAPI.getTemperature()
     }
 
+    handleTemperatureInterval = (e) => {
+        console.log('hello')
+        console.log(e.target.value)
+    }
+
     render(){
-        const { handleSwitch, handleSlider, handleTemperature } = this 
+        const { handleSwitch, handleSlider, handleTemperature, handleTemperatureInterval } = this 
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}/>
-            <TemperatureInterval handleTemperature={handleTemperature}/>
+            <TemperatureInterval handleTemperature={handleTemperature} 
+                temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>
 
         </div>
