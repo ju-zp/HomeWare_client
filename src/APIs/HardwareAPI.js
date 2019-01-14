@@ -24,7 +24,7 @@ class HardWareAPI {
     }
 
     static getTemperature(){
-        fetch(this.tempReadingURL)
+        return fetch(this.tempReadingURL)
             .then(data => data.json())
     }
 }

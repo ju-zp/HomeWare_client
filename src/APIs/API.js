@@ -40,7 +40,7 @@ class API {
         })
     }
 
-    static reading(username, temp) {
+    static sendReading(username, temp) {
         fetch(this.reading, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
