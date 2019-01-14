@@ -38,11 +38,11 @@ class Controller extends Component {
     }
 
     render(){
-        const { handleSwitch, handleSlider } = this 
+        const { handleSwitch, handleSlider, handleTemperature } = this 
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}/>
-            <TemperatureInterval/>
+            <TemperatureInterval handleTemperature={handleTemperature}/>
             <AmbientSwitch/>
 
         </div>
