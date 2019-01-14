@@ -1,6 +1,7 @@
 class HardWareAPI {
     static init(){
-        this.baseURL = "http://127.0.0.1:3002"
+        this.baseURL = 'http://127.0.0.1:3002'
+        this.welcomeURL = this.baseURL + '/welcome'
         this.switchOnURL = this.baseURL + '/switchOn'
         this.switchOffURL = this.baseURL + '/switchOff'
         this.setColorURL = this.baseURL + '/setColor'
