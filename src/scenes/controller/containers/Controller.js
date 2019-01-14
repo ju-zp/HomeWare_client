@@ -52,6 +52,7 @@ class Controller extends Component {
 
     handleSave = () => {
         console.log('hello')
+        this.setState({save: true})
     }
 
     render(){
@@ -60,7 +61,7 @@ class Controller extends Component {
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}
-                save={handleSave}/>
+                handleSave={handleSave}/>
             <TemperatureInterval intervalValue={intervalVal} 
                 temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>

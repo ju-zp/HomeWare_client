@@ -16,7 +16,7 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes, handleSlider, save }) => {
+const ControllerText = ({ classes, handleSlider, handleSave }) => {
     return <div>
         <Typography className={classes.title}>
             Color Settings
@@ -33,7 +33,7 @@ const ControllerText = ({ classes, handleSlider, save }) => {
             Green
         </Typography>
         <ColorSlider handleSlider={handleSlider} color="green"/>
-        <Button onClick={save}>Save</Button>
+        <Button onClick={handleSave}>Save</Button>
     </div>
 }
 
