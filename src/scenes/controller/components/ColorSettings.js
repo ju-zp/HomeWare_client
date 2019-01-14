@@ -1,5 +1,5 @@
 import React from'react'
-import { Typography, withStyles} from '@material-ui/core';
+import { Typography, withStyles, Button} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 
 const styles = () => ({
@@ -33,6 +33,7 @@ const ControllerText = ({ classes, handleSlider }) => {
             Green
         </Typography>
         <ColorSlider handleSlider={handleSlider} color="green"/>
+        <Button>Save</Button>
     </div>
 }
 
