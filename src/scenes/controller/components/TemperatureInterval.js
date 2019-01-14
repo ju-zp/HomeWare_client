@@ -37,7 +37,8 @@ class TemperatureInterval extends Component {
                 value={time}
                 inputProps={{
                     name: 'time'
-                }}>
+                }}
+                >
                 <MenuItem value={0}>--None--</MenuItem>
                 <MenuItem value={0.5}>30 Seconds</MenuItem>
                 <MenuItem value={1}>1 Minute</MenuItem>
