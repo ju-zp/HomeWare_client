@@ -24,6 +24,10 @@ const TemperatureInterval = ({ classes, handleTemperature }) => {
         </TextField>
         <Select>
             <MenuItem value="">--None--</MenuItem>
+            <MenuItem value={0.5}>30 Seconds</MenuItem>
+            <MenuItem value={1}>1 Minute</MenuItem>
+            <MenuItem value={30}>30 Minutes</MenuItem>
+            <MenuItem value={60}>60 Minutes</MenuItem>
         </Select>
         <Button onClick={handleTemperature}>Set</Button>
     </div>
