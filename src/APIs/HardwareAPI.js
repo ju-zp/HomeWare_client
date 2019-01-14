@@ -8,8 +8,12 @@ class HardWareAPI {
         this.tempReadingURL = this.baseURL + '/temperature'
     }
 
-    static welcome(){
-        fetch(this.welcomeURL)
+    static welcome(username){
+        fetch(this.welcomeURL, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: username
+        })
     }
 
     static switchOn(){

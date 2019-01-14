@@ -8,6 +8,7 @@ import Landing from './scenes/landing/containers/Landing'
 import Login from './scenes/login/Login'
 import Controller from './scenes/controller/containers/Controller'
 import API from './APIs/API'
+import HardwareAPI from './APIs/HardwareAPI'
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
 
   logIn = username => {
     localStorage.setItem('username', username)
+    HardwareAPI.welcome(username)
     this.setState({ username, page: 'Controller' })
   }
 
