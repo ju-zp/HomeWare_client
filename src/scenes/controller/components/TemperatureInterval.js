@@ -19,17 +19,22 @@ class TemperatureInterval extends Component {
 
     handleChange = e => {
         this.props.temperatureInterval(e)
+        console.log(e.target.name)
     }
 
     render(){
-        const { classes, handleTemperature, temperatureInterval } = this.props 
+        const { classes, handleTemperature, temperatureInterval } = this.props
+        const { handleChange } = this 
         return <div>
             <Typography className={classes.title}>
                 Temperature
             </Typography>
             <TextField>
             </TextField>
-            <Select onChange={ e => temperatureInterval(e)}>
+            <Select onChange={handleChange}
+                inputProps={{
+                    name: 'time'
+                }}>
                 <MenuItem value="">--None--</MenuItem>
                 <MenuItem value={0.5}>30 Seconds</MenuItem>
                 <MenuItem value={1}>1 Minute</MenuItem>
