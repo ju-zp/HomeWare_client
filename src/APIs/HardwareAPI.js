@@ -22,6 +22,10 @@ class HardWareAPI {
             body: JSON.stringify(color) 
         })
     }
+
+    static getTemperature(){
+        fetch(this.tempReadingURL)
+    }
 }
 
 HardWareAPI.init()
