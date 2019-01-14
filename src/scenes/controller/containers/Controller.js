@@ -12,9 +12,12 @@ class Controller extends Component {
 
     state = {
         on: false,
-        red: 255,
-        green: 255,
-        blue: 255
+        color: {
+            red: 255,
+            green: 255,
+            blue: 255
+        }
+       
     }
 
     handleSwitch = (val) => {
