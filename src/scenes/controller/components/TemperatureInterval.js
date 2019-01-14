@@ -16,6 +16,11 @@ const styles = () => ({
 })
 
 class TemperatureInterval extends Component {
+
+    handleChange = e => {
+        this.props.temperatureInterval(e)
+    }
+
     render(){
         const { classes, handleTemperature, temperatureInterval } = this.props 
         return <div>
