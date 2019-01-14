@@ -17,22 +17,21 @@ class Controller extends Component {
             green: 255,
             blue: 255
         }
-       
     }
 
     handleSwitch = (val) => {
         this.setState({on: val})
         if(val){
-            HardwareAPI.setColor(this.state)
+            HardwareAPI.setColor(this.state.color)
         } else {
             HardwareAPI.switchOff()
         } 
     } 
 
     handleSlider = data => {
-        this.setState({[data.color]: data.value})
+        this.setState({color: {[data.color]: data.value}})
         if(this.state.on){
-            HardwareAPI.setColor(this.state)
+            HardwareAPI.setColor(this.state.color)
         }
     }
 
