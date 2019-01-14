@@ -35,6 +35,7 @@ class Controller extends Component {
 
     handleTemperature = () => {
         console.log("hello")
+        HardwareAPI.getTemperature()
     }
 
     render(){
