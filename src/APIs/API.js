@@ -4,6 +4,7 @@ class API {
         this.signupURL = this.baseURL + '/signup'
         this.loginURL = this.baseURL + '/login'
         this.validateURL = this.baseURL + '/validate'
+        this.signoutURL = this.baseURL + '/logout'
     }
 
     static signup(user) {
@@ -28,7 +29,18 @@ class API {
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ username: username })
         }).then(resp => resp.json())
-      }
+    }
 
+    static signout(username) {
+        fetch(this.signoutURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ username: username })
+        })
 
+    }
 }
+
+API.init()
+
+export default API

@@ -2,15 +2,22 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
-import API from './API'
+import API from '../../../APIs/API'
 
 const styles = () => ({
+    text: {
+        color: '#004E59',
+        
+    },
     button: {
         backgroundColor: '#004E59',
         color: 'white',
         marginTop: '5%',
         '&:hover': {
-            background: '#004857'
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
         }
     }
 })
@@ -33,15 +40,13 @@ class SignUp extends Component {
         } else {
             resp = await API.signup(this.state)
         }
-        // console.log(resp)
-        // const resp = await API.login(this.state)
-        // if(resp.error){
-        //   console.log(resp.error)
-        // } else {
+        if(resp.error){
+          console.log(resp.error)
+        } else {
             this.props.logIn(this.state.username)
             this.props.history.push('/controller')
-          console.log("success")
-        // }
+            console.log("success")
+        }
       }
 
     render(){
@@ -49,7 +54,7 @@ class SignUp extends Component {
         const { handleChange, handleLogIn } = this
         const { title} = this.props
         return <div className='form'>
-            <p>{title}</p>
+            <p className={classes.text}>{title}</p>
             <FormControl fullWidth={true}>
                 <TextField label='username'
                     name='username'

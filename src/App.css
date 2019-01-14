@@ -3,9 +3,14 @@
    color: white;
 }
 
-.title {
+.mainTitle {
   color: white;
   margin-right: 45%;
+}
+
+.title {
+  color: white;
+  margin-right: 39%
 }
 
 .form {
@@ -17,6 +22,15 @@
   border: 3px solid #004857;
   padding: 10px;
   margin: auto;
+}
+
+.controller {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.controllerText {
+  font-size: 20;
 }
 
 .loginLink {

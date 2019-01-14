@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
-
 import AppBar from 'material-ui/AppBar'
-import { Link } from 'react-router-dom'
-import { FormControl, TextField, Button } from '@material-ui/core'; 
+import { Button } from '@material-ui/core'; 
 
+import MainTitle from './components/MainTitle'
 import Title from './components/Title'
+
 
 class NavBar extends Component {
 
     render(){
-        const { logout} = this.props
+        const { username, logOut, page} = this.props
         return( <div>
-                <AppBar
+                { username ?  <AppBar
+                    style={{
+                    backgroundColor: '#004857'}}
+                >
+                    <Title title={page}/>
+                    <Button style={{color: 'white'}} onClick={logOut}>LogOut</Button>
+                </AppBar>
+                :<AppBar
                     showMenuIconButton={false}
                     style={{backgroundColor: '#004857'}}
-                    >
-                    <Title />
-                </AppBar>
+                >
+                    <MainTitle />
+                </AppBar>}
+                
             </div>
         )
     }
 }
 
 export default NavBar
-
-{/* <AppBar
-                    showMenuIconButton={false}
-                    style={{
-                    backgroundColor: '#004857'}}
-                >
-                    <Button onClick={logout}>LogOut</Button>
-                </AppBar> */}
