@@ -8,7 +8,7 @@ class HardWareAPI {
         this.tempReadingURL = this.baseURL + '/temperature'
     }
 
-    static welcome(){
+    static welcome(username){
         fetch(this.welcomeURL)
     }
 

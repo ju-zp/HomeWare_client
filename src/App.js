@@ -21,7 +21,7 @@ class App extends Component {
 
   logIn = username => {
     localStorage.setItem('username', username)
-    HardwareAPI.welcome()
+    HardwareAPI.welcome(username)
     this.setState({ username, page: 'Controller' })
   }
 
