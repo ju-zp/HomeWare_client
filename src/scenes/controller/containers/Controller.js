@@ -6,6 +6,7 @@ import ColorSettings from '../components/ColorSettings';
 import TemperatureInterval from '../components/TemperatureInterval';
 import AmbientSwitch from '../components/AmbientSwitch';
 import HardwareAPI from '../../../APIs/HardwareAPI'
+import API from '../../../APIs/API'
 
 
 class Controller extends Component {
@@ -44,6 +45,7 @@ class Controller extends Component {
     handleTemperatureInterval = time => {
         this.setState({interval: setInterval(() => {
             console.log(HardwareAPI.getTemperature())
+
             }, time * 1000),
             intervalVal: time})
         console.log('hello')
