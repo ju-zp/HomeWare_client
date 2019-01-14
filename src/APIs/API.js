@@ -5,6 +5,7 @@ class API {
         this.loginURL = this.baseURL + '/login'
         this.validateURL = this.baseURL + '/validate'
         this.signoutURL = this.baseURL + '/logout'
+        this.reading = this.baseURL + '/reading'
     }
 
     static signup(user) {
@@ -37,7 +38,14 @@ class API {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ username: username })
         })
+    }
 
+    static reading(username) {
+        fetch(this.reading, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body : JSON.stringify({ username: username})
+        })
     }
 }
 
