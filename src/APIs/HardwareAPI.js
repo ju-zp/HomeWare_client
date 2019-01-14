@@ -9,7 +9,11 @@ class HardWareAPI {
     }
 
     static welcome(username){
-        fetch(this.welcomeURL)
+        fetch(this.welcomeURL, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: username
+        })
     }
 
     static switchOn(){
