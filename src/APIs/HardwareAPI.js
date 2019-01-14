@@ -35,6 +35,10 @@ class HardWareAPI {
     static getTemperature(){
         fetch(this.tempReadingURL).then(data => data.json()).then(test => console.log(test))
     }
+
+    static logout(){
+        fetch(this.signoutURL)
+    }
 }
 
 HardWareAPI.init()
