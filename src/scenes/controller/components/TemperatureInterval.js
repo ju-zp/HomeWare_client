@@ -22,7 +22,7 @@ const TemperatureInterval = ({ classes, handleTemperature, temperatureInterval }
         </Typography>
         <TextField>
         </TextField>
-        <Select onChange={temperatureInterval}>
+        <Select onChange={ e => temperatureInterval(e)}>
             <MenuItem value="">--None--</MenuItem>
             <MenuItem value={0.5}>30 Seconds</MenuItem>
             <MenuItem value={1}>1 Minute</MenuItem>
