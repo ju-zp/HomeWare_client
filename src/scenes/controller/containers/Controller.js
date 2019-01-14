@@ -40,6 +40,10 @@ class Controller extends Component {
         HardwareAPI.getTemperature()
     }
 
+    handleTemperatureInterval = () => {
+        console.log('hello')
+    }
+
     render(){
         const { handleSwitch, handleSlider, handleTemperature } = this 
         return <div className="controller">
