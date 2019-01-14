@@ -46,7 +46,7 @@ class TemperatureInterval extends Component {
                 <MenuItem value={30}>30 Minutes</MenuItem>
                 <MenuItem value={60}>60 Minutes</MenuItem>
             </Select>
-            <Button onClick={handleTemperature}>Set</Button>
+            <Button onClick={() => temperatureInterval(time)}>Set</Button>
         </div>
     }
 }
