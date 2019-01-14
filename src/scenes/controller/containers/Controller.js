@@ -21,6 +21,10 @@ class Controller extends Component {
         intervalVal: 0
     }
 
+    componentWillUnmount(){
+        clearInterval(this.state.interval)
+    }
+
     handleSwitch = (val) => {
         this.setState({on: val})
         if(val){
