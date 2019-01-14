@@ -31,8 +31,10 @@ class Controller extends Component {
         if(this.state.on){
             HardwareAPI.setColor(this.state)
         }
-        
-        
+    }
+
+    handleTemperature = () => {
+        console.log("hello")
     }
 
     render(){
