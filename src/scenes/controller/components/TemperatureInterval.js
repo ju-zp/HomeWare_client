@@ -17,6 +17,10 @@ const styles = () => ({
 
 class TemperatureInterval extends Component {
 
+    state = {
+        time: 0
+    }
+
     handleChange = e => {
         this.props.temperatureInterval(e)
         console.log(e.target.name)
