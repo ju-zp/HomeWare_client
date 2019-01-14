@@ -50,12 +50,17 @@ class Controller extends Component {
             intervalVal: time})
     }
 
+    handleSave = () => {
+        console.log('hello')
+    }
+
     render(){
-        const { handleSwitch, handleSlider, handleTemperatureInterval } = this
+        const { handleSwitch, handleSlider, handleTemperatureInterval, handleSave } = this
         const { intervalVal } = this.state
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
-            <ColorSettings handleSlider={handleSlider}/>
+            <ColorSettings handleSlider={handleSlider}
+                save={handleSave}/>
             <TemperatureInterval intervalValue={intervalVal} 
                 temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>
