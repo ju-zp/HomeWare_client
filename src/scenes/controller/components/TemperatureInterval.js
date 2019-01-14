@@ -18,7 +18,7 @@ const styles = () => ({
 class TemperatureInterval extends Component {
 
     state = {
-        time: 0
+        time: this.props.intervalValue
     }
 
     handleChange = e => {
@@ -26,7 +26,7 @@ class TemperatureInterval extends Component {
     }
 
     render(){
-        const { classes, handleTemperature, temperatureInterval } = this.props
+        const { classes, temperatureInterval } = this.props
         const { handleChange } = this
         const { time } = this.state 
         return <div>
