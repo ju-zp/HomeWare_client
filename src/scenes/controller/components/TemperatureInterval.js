@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, TextField, withStyles, Button, Select } from '@material-ui/core';
+import { Typography, TextField, withStyles, Button, Select, MenuItem } from '@material-ui/core';
 
 const styles = () => ({
     title: {
@@ -23,7 +23,7 @@ const TemperatureInterval = ({ classes, handleTemperature }) => {
         <TextField>
         </TextField>
         <Select>
-            
+            <MenuItem value="">--None--</MenuItem>
         </Select>
         <Button onClick={handleTemperature}>Set</Button>
     </div>
