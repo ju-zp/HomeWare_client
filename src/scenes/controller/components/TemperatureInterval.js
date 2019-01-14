@@ -40,10 +40,10 @@ class TemperatureInterval extends Component {
                 }}
                 >
                 <MenuItem value={0}>--None--</MenuItem>
-                <MenuItem value={0.5}>30 Seconds</MenuItem>
-                <MenuItem value={1}>1 Minute</MenuItem>
-                <MenuItem value={30}>30 Minutes</MenuItem>
-                <MenuItem value={60}>60 Minutes</MenuItem>
+                <MenuItem value={30}>30 Seconds</MenuItem>
+                <MenuItem value={60}>1 Minute</MenuItem>
+                <MenuItem value={1800}>30 Minutes</MenuItem>
+                <MenuItem value={3600}>60 Minutes</MenuItem>
             </Select>
             <Button onClick={() => temperatureInterval(time)}>Set</Button>
         </div>
