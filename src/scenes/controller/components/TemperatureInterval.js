@@ -29,15 +29,14 @@ class TemperatureInterval extends Component {
 
     render(){
         const { classes, handleTemperature, temperatureInterval } = this.props
-        const { handleChange } = this 
+        const { handleChange } = this
+        const { time } = this.state 
         return <div>
             <Typography className={classes.title}>
                 Temperature
             </Typography>
-            <TextField>
-            </TextField>
             <Select onChange={handleChange}
-                value={this.state.time}
+                value={time}
                 inputProps={{
                     name: 'time'
                 }}>
