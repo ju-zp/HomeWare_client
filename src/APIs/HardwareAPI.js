@@ -4,6 +4,7 @@ class HardWareAPI {
          this.switchOnURL = this.baseURL + '/switchOn'
          this.switchOffURL = this.baseURL + '/switchOff'
          this.setColorURL = this.baseURL + '/setColor'
+         this.tempReadingURL = this.baseURL + '/temperature'
      }
 
      static switchOn(){
