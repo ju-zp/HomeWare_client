@@ -24,7 +24,7 @@ class Controller extends Component {
     }
 
     componentDidMount(){
-        API.getColors(localStorage.username)
+        this.setState({colors: API.getColors(localStorage.username)})
     }
 
     componentWillUnmount(){
@@ -56,12 +56,10 @@ class Controller extends Component {
     }
 
     handleSaveClick = () => {
-        console.log('hello')
         this.setState({save: true})
     }
 
     handleSave = name => {
-        console.log('save')
         const color = {...this.state.color, name} 
         API.saveColor(color, localStorage.username)
         this.setState({save: false})
@@ -69,13 +67,15 @@ class Controller extends Component {
 
     render(){
         const { handleSwitch, handleSlider, handleTemperatureInterval, handleSaveClick, handleSave } = this
-        const { intervalVal, save } = this.state
+        const { intervalVal, save, colors } = this.state
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}
+                colors={colors}
                 handleSave={handleSaveClick}
                 showSave={save}
-                save={handleSave}/>
+                save={handleSave}
+                />
             <TemperatureInterval intervalValue={intervalVal} 
                 temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>
