@@ -21,13 +21,7 @@ const styles = () => ({
     
 })
 
-class ControllerSetting extends Component {
-
-    state = {
-        red: 255,
-        green: 255,
-        blue: 255
-    }
+class ColorSetting extends Component {
 
     handleChange = e => {
         const color = {
@@ -86,4 +80,4 @@ const mapDispatchToProp = dispatch => {
 }
 
 
-export default connect(mapStateToProp, mapDispatchToProp)(withStyles(styles)(ControllerSetting))
+export default connect(mapStateToProp, mapDispatchToProp)(withStyles(styles)(ColorSetting))
