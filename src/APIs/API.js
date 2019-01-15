@@ -48,6 +48,14 @@ class API {
             body : JSON.stringify({ username: username, reading: temp})
         }).then(resp => console.log(resp.json()))
     }
+
+    static saveColor(color){
+        fetch(this.saveColorURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(color)
+        })
+    }
 }
 
 API.init()
