@@ -1,5 +1,5 @@
 import React from'react'
-import { Typography, withStyles, Button, Select} from '@material-ui/core';
+import { Typography, withStyles, Button, Select, MenuItem} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'
 
@@ -23,8 +23,9 @@ const ControllerText = ({ classes, handleSlider, handleSave, showSave, save, col
             Color Settings
         </Typography>
         {colors.length > 0 
-            ? <Select>
-                {colors.map(c => console.log(c))}
+            ? <Select value="color">
+                <MenuItem value="">--None--</MenuItem>
+                {colors.map(c => <MenuItem value={c.name}>{c.name}</MenuItem>)}
             </Select>
             : <h1>no colors</h1>}
         <Typography className={classes.text}>
