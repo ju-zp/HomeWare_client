@@ -6,7 +6,7 @@ const color = (state = {
     switch(action.type){
 
         case 'SET_COLOR':
-            return state
+            return action.payload
 
         default: 
             return state

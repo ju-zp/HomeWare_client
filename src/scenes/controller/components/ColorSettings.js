@@ -1,4 +1,6 @@
 import React, { Component } from'react'
+import { connect } from 'react-redux'
+
 import { Typography, withStyles, Button, Select, MenuItem} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'

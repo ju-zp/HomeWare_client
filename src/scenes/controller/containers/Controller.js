@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { switchOn, switchOff } from '../../../actions/actions'
+import { switchOn, switchOff, setColor } from '../../../actions/actions'
 
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
@@ -14,11 +14,6 @@ import API from '../../../APIs/API'
 class Controller extends Component {
 
     state = {
-        color: {
-            red: 255,
-            green: 255,
-            blue: 255
-        },
         interval: null,
         intervalVal: 0, 
         save: false,
@@ -45,9 +40,9 @@ class Controller extends Component {
     } 
 
     handleSlider = data => {
-        this.setState({color: {...this.state.color,[data.color]: data.value}})
-        if(this.state.on){
-            HardwareAPI.setColor(this.state.color)
+        this.props.setColor({...this.props.color, [data.color]: data.value})
+        if(this.props.light){
+            HardwareAPI.setColor(this.props.color)
         }
     }
 
@@ -91,14 +86,16 @@ class Controller extends Component {
 
 const mapStateToProps = state => {
     return {
-        light: state.light
+        light: state.light,
+        color: state.color
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         switchOn: () => dispatch(switchOn()),
-        switchOff: () => dispatch(switchOff())
+        switchOff: () => dispatch(switchOff()),
+        setColor: color => dispatch(setColor(color))
     }
 }
 
