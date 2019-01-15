@@ -14,7 +14,6 @@ import API from '../../../APIs/API'
 class Controller extends Component {
 
     state = {
-        color: null,
         interval: null,
         intervalVal: 0, 
         save: false,
