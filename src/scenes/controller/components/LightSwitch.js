@@ -9,11 +9,11 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes, handleSwitch, value }) => {
+const LightSwitch = ({ classes, handleSwitch, value }) => {
     return <Typography className={classes.text}>
         Light Switch
         <Switch checked={value} onChange={(e,c) => handleSwitch(c)}></Switch>
     </Typography>
 }
 
-export default withStyles(styles)(ControllerText)
+export default withStyles(styles)(LightSwitch)
