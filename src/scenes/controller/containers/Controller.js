@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { switchOn, switchOff } from '../../../actions/actions'
+
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
 import TemperatureInterval from '../components/TemperatureInterval';
@@ -93,4 +95,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Controller)
+const mapDispatchToProps = dispatch => {
+    return {
+        switchOn: () => dispatch(switchOn),
+        switchOff: () => dispatch(switchOff)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controller)
