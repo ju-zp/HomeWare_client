@@ -19,8 +19,18 @@ const styles = () => ({
 
 class ControllerSetting extends Component {
 
-    handleChange = () => {
-        console.log('hello')
+    state = {
+        red: 255,
+        green: 255,
+        blue: 255
+    }
+
+    handleChange = e => {
+        this.setState({
+            red: e.target.value.red,
+            green: e.target.value.green,
+            blue: e.target.value.blue})
+        console.log(e.target.value)
     }
 
     render(){
@@ -32,9 +42,9 @@ class ControllerSetting extends Component {
             </Typography>
             {colors.length > 0 
                 ? <Select value="color"
-                    onChange={handleChange}>
+                    onChange={e => handleChange(e)}>
                     <MenuItem value="">--None--</MenuItem>
-                    {colors.map(c => <MenuItem key={c.id} value={c.name}>{c.name}</MenuItem>)}
+                    {colors.map(c => <MenuItem key={c.id} value={c}>{c.name}</MenuItem>)}
                 </Select>
                 : <h1>no colors</h1>}
             <Typography className={classes.text}>
