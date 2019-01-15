@@ -30,17 +30,13 @@ class ControllerSetting extends Component {
     }
 
     handleChange = e => {
-        // this.props.setColor({
-        //     red: e.target.value.red,
-        //     green: e.target.value.green,
-        //     blue: e.target.value.blue})
-        console.log(e.target.value.red)
-        // HardwareAPI.setColor(this.props.color)
-        // this.setState({
-        //     red: e.target.value.red,
-        //     green: e.target.value.green,
-        //     blue: e.target.value.blue})
-        // console.log(e.target.value)
+        const color = {
+            red: e.target.value.red,
+            green: e.target.value.green,
+            blue: e.target.value.blue
+        }
+        this.props.setColor(color)
+        HardwareAPI.setColor(color)
     }
 
     render(){

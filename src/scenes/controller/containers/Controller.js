@@ -60,7 +60,8 @@ class Controller extends Component {
     }
 
     handleSave = name => {
-        const color = {...this.state.color, name} 
+        const color = {...this.props.color, name} 
+        console.log(color)
         API.saveColor(color, localStorage.username)
         this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
