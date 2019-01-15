@@ -1,4 +1,6 @@
-import { CombineReducers } from 'redux'
+import { combineReducers } from 'redux'
 import light from './light'
 
-export default rootReducer = CombineReducers({light})
+const rootReducer = combineReducers({light})
+
+export default rootReducer

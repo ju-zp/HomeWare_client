@@ -25,6 +25,7 @@ class Controller extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props)
         API.getColors(localStorage.username)
             .then(data => this.setState({colors: data.colors}))
     }
@@ -86,4 +87,10 @@ class Controller extends Component {
     }
 }
 
-export default Controller
+const mapStateToProps = state => {
+    return {
+        light: state.light
+    }
+}
+
+export default connect(mapStateToProps)(Controller)

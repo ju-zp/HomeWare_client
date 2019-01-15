@@ -1,4 +1,4 @@
-export default light = (state = false, action) => {
+const light = (state = false, action) => {
     switch(action.type) {
 
         case 'SWITCH_ON':
@@ -11,4 +11,4 @@ export default light = (state = false, action) => {
             return state
     }
 }
-
+ export default light
