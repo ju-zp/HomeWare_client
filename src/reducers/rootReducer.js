@@ -5,8 +5,7 @@ import interval from './interval'
 
 const rootReducer = combineReducers({
     light,
-    color,
-    interval
+    color
 })
 
 export default rootReducer

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { switchOn, switchOff, setColor } from '../../../actions/actions'
+import { switchOn, switchOff, setColor, setInterval } from '../../../actions/actions'
 
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
@@ -40,7 +40,6 @@ class Controller extends Component {
     } 
 
     handleSlider = data => {
-        // console.log('hello')
         this.props.setColor({...this.props.color, [data.color]: data.value})
         if(this.props.light){
             HardwareAPI.setColor(this.props.color)
@@ -48,11 +47,14 @@ class Controller extends Component {
     }
 
     handleTemperatureInterval = time => {
-        this.setState({interval: setInterval(() => {
-            HardwareAPI.getTemperature()
-                .then(data => API.sendReading(localStorage.username, data.reading))
-            }, time * 1000),
-            intervalVal: time})
+        this.props.setInterval(setInterval(() => {
+            console.log('hello')
+        }, 1000))
+        // this.setState({interval: setInterval(() => {
+        //     HardwareAPI.getTemperature()
+        //         .then(data => API.sendReading(localStorage.username, data.reading))
+        //     }, time * 1000),
+        //     intervalVal: time})
     }
 
     handleSaveClick = () => {
@@ -89,7 +91,8 @@ class Controller extends Component {
 const mapStateToProps = state => {
     return {
         light: state.light,
-        color: state.color
+        color: state.color,
+        interval: state.interval
     }
 }
 
