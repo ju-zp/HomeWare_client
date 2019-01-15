@@ -17,11 +17,12 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes, handleSlider, handleSave, showSave, save }) => {
+const ControllerText = ({ classes, handleSlider, handleSave, showSave, save, colors }) => {
     return <div>
         <Typography className={classes.title}>
             Color Settings
         </Typography>
+        {colors.length > 0 ? <h1>colors</h1> : <h1>no colors</h1>}
         <Typography className={classes.text}>
             Red
         </Typography>
