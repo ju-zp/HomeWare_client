@@ -2,10 +2,10 @@ const light = (state = false, action) => {
     switch(action.type) {
 
         case 'SWITCH_ON':
-            return state = true
+            return true
 
         case 'SWITCH_OFF':
-            return state = false
+            return false
 
         default:
             return state

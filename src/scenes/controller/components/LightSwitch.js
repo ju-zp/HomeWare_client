@@ -9,10 +9,11 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes, handleSwitch }) => {
+const ControllerText = ({ classes, handleSwitch, value }) => {
+    console.log(value)
     return <Typography className={classes.text}>
         Light Switch
-        <Switch onChange={(e,c) => handleSwitch(c)}></Switch>
+        <Switch checked={value} onChange={(e,c) => handleSwitch(c)}></Switch>
     </Typography>
 }
 

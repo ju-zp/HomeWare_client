@@ -37,10 +37,12 @@ class Controller extends Component {
     }
 
     handleSwitch = (val) => {
-        this.setState({on: val})
+        // this.setState({on: val})
         if(val){
+            this.props.switchOn()
             HardwareAPI.setColor(this.state.color)
         } else {
+            this.props.switchOff()
             HardwareAPI.switchOff()
         } 
     } 
@@ -73,8 +75,9 @@ class Controller extends Component {
     render(){
         const { handleSwitch, handleSlider, handleTemperatureInterval, handleSaveClick, handleSave } = this
         const { intervalVal, save, colors } = this.state
+        const { light } = this.props
         return <div className="controller">
-            <LightSwitch handleSwitch={handleSwitch}/>
+            <LightSwitch handleSwitch={handleSwitch} value={light}/>
             <ColorSettings handleSlider={handleSlider}
                 colors={colors}
                 handleSave={handleSaveClick}
@@ -97,8 +100,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        switchOn: () => dispatch(switchOn),
-        switchOff: () => dispatch(switchOff)
+        switchOn: () => dispatch(switchOn()),
+        switchOff: () => dispatch(switchOff())
     }
 }
 
