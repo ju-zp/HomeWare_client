@@ -1,6 +1,7 @@
 import React, { Component } from'react'
 import { connect } from 'react-redux'
 
+import { setColor } from '../../../actions/actions'
 import { Typography, withStyles, Button, Select, MenuItem} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'
@@ -28,11 +29,15 @@ class ControllerSetting extends Component {
     }
 
     handleChange = e => {
-        this.setState({
+        this.props.setColor({
             red: e.target.value.red,
             green: e.target.value.green,
             blue: e.target.value.blue})
-        console.log(e.target.value)
+        // this.setState({
+        //     red: e.target.value.red,
+        //     green: e.target.value.green,
+        //     blue: e.target.value.blue})
+        // console.log(e.target.value)
     }
 
     render(){
@@ -52,7 +57,7 @@ class ControllerSetting extends Component {
             <Typography className={classes.text}>
                 Red
             </Typography>
-            <ColorSlider handleSlider={handleSlider} color="red"/>
+            <ColorSlider handleSlider={handleSlider} value={} color="red"/>
             <Typography className={classes.text}>
                 Blue
             </Typography>
@@ -66,5 +71,11 @@ class ControllerSetting extends Component {
     }
 }
 
+const mapDispatchToProp = dispatch => {
+    return {
+        setColor: color => dispatch(setColor(color))
+    }
+}
 
-export default withStyles(styles)(ControllerSetting)
+
+export default connect(null, mapDispatchToProp)(withStyles(styles)(ControllerSetting))

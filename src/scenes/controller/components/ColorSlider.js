@@ -1,4 +1,6 @@
 import React, { Component } from'react'
+import { connect } from 'react-redux'
+
 import { withStyles } from '@material-ui/core' 
 import Slider from '@material-ui/lab/Slider'
 
@@ -31,6 +33,12 @@ class ColorSlider extends Component {
             value={this.state.value}
             onChange={handleChange}
         />
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        color: state.color
     }
 }
 
