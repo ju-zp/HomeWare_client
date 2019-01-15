@@ -7,6 +7,7 @@ class API {
         this.signoutURL = this.baseURL + '/logout'
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'
+        this.getColorsURL = this.baseURL + '/colors'
     }
 
     static signup(user) {
@@ -54,6 +55,14 @@ class API {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({color, username})
+        })
+    }
+
+    static getColors(username){
+        fetch(this.getColorsURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username})
         })
     }
 }
