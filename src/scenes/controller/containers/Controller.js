@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Typography, Switch } from '@material-ui/core'
 
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
@@ -19,7 +18,14 @@ class Controller extends Component {
             blue: 255
         },
         interval: null,
-        intervalVal: 0
+        intervalVal: 0, 
+        save: false,
+        colors: []
+    }
+
+    componentDidMount(){
+        API.getColors(localStorage.username)
+            .then(data => this.setState({colors: data.colors}))
     }
 
     componentWillUnmount(){
@@ -50,12 +56,27 @@ class Controller extends Component {
             intervalVal: time})
     }
 
+    handleSaveClick = () => {
+        this.setState({save: true})
+    }
+
+    handleSave = name => {
+        const color = {...this.state.color, name} 
+        API.saveColor(color, localStorage.username)
+        this.setState({save: false, colors: API.getColors(localStorage.username)})
+    }
+
     render(){
-        const { handleSwitch, handleSlider, handleTemperatureInterval } = this
-        const { intervalVal } = this.state
+        const { handleSwitch, handleSlider, handleTemperatureInterval, handleSaveClick, handleSave } = this
+        const { intervalVal, save, colors } = this.state
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
-            <ColorSettings handleSlider={handleSlider}/>
+            <ColorSettings handleSlider={handleSlider}
+                colors={colors}
+                handleSave={handleSaveClick}
+                showSave={save}
+                save={handleSave}
+                />
             <TemperatureInterval intervalValue={intervalVal} 
                 temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>
