@@ -12,9 +12,10 @@ class SaveForm extends Component {
     }
 
     render(){
-        const { save } = this.props 
+        const { save } = this.props
+        const { handleChange } = this
         return <div>
-            <TextField label='name'/>
+            <TextField onChange={handleChange} label='name'/>
             <Button onClick={save}>Save</Button>
         </div>
     }
