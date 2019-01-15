@@ -54,7 +54,7 @@ class ControllerSetting extends Component {
                     <MenuItem value="">--None--</MenuItem>
                     {colors.map(c => <MenuItem key={c.id} value={c}>{c.name}</MenuItem>)}
                 </Select>
-                : <h1>no colors</h1>}
+                : null }
             <Typography className={classes.text}>
                 Red
             </Typography>
