@@ -16,7 +16,7 @@ class SaveForm extends Component {
         const { handleChange } = this
         return <div>
             <TextField onChange={handleChange} label='name'/>
-            <Button onClick={save}>Save</Button>
+            <Button onClick={() => save(this.state)}>Save</Button>
         </div>
     }
     
