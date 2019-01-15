@@ -14,7 +14,6 @@ import API from '../../../APIs/API'
 class Controller extends Component {
 
     state = {
-        on: false,
         color: {
             red: 255,
             green: 255,
@@ -27,7 +26,6 @@ class Controller extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props)
         API.getColors(localStorage.username)
             .then(data => this.setState({colors: data.colors}))
     }
@@ -37,7 +35,6 @@ class Controller extends Component {
     }
 
     handleSwitch = (val) => {
-        // this.setState({on: val})
         if(val){
             this.props.switchOn()
             HardwareAPI.setColor(this.state.color)
