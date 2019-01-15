@@ -49,11 +49,11 @@ class API {
         }).then(resp => console.log(resp.json()))
     }
 
-    static saveColor(color){
+    static saveColor(color, username){
         fetch(this.saveColorURL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(color)
+            body: JSON.stringify({color, username})
         })
     }
 }
