@@ -5,6 +5,7 @@ import { setColor } from '../../../actions/actions'
 import { Typography, withStyles, Button, Select, MenuItem} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'
+import HardwareAPI from '../../../APIs/HardwareAPI'
 
 const styles = () => ({
     title: {
@@ -29,10 +30,12 @@ class ControllerSetting extends Component {
     }
 
     handleChange = e => {
-        this.props.setColor({
-            red: e.target.value.red,
-            green: e.target.value.green,
-            blue: e.target.value.blue})
+        // this.props.setColor({
+        //     red: e.target.value.red,
+        //     green: e.target.value.green,
+        //     blue: e.target.value.blue})
+        console.log(e.target.value.red)
+        // HardwareAPI.setColor(this.props.color)
         // this.setState({
         //     red: e.target.value.red,
         //     green: e.target.value.green,
@@ -57,17 +60,23 @@ class ControllerSetting extends Component {
             <Typography className={classes.text}>
                 Red
             </Typography>
-            <ColorSlider handleSlider={handleSlider} value={} color="red"/>
+            <ColorSlider handleSlider={handleSlider} colorName="red"/>
             <Typography className={classes.text}>
                 Blue
             </Typography>
-            <ColorSlider handleSlider={handleSlider} color="blue"/>
+            <ColorSlider handleSlider={handleSlider} colorName="blue"/>
             <Typography className={classes.text}>
                 Green
             </Typography>
-            <ColorSlider handleSlider={handleSlider} color="green"/>
+            <ColorSlider handleSlider={handleSlider} colorName="green"/>
             {showSave ? <SaveForm save={save}/>: <Button onClick={handleSave}>Save</Button>}
         </div>
+    }
+}
+
+const mapStateToProp = state => {
+    return {
+        color: state.color
     }
 }
 
@@ -78,4 +87,4 @@ const mapDispatchToProp = dispatch => {
 }
 
 
-export default connect(null, mapDispatchToProp)(withStyles(styles)(ControllerSetting))
+export default connect(mapStateToProp, mapDispatchToProp)(withStyles(styles)(ControllerSetting))

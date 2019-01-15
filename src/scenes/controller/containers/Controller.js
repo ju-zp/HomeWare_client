@@ -32,7 +32,7 @@ class Controller extends Component {
     handleSwitch = (val) => {
         if(val){
             this.props.switchOn()
-            HardwareAPI.setColor(this.state.color)
+            HardwareAPI.setColor(this.props.color)
         } else {
             this.props.switchOff()
             HardwareAPI.switchOff()
@@ -40,6 +40,7 @@ class Controller extends Component {
     } 
 
     handleSlider = data => {
+        // console.log('hello')
         this.props.setColor({...this.props.color, [data.color]: data.value})
         if(this.props.light){
             HardwareAPI.setColor(this.props.color)
