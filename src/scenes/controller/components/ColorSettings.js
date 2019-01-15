@@ -1,4 +1,4 @@
-import React from'react'
+import React, { Component } from'react'
 import { Typography, withStyles, Button, Select, MenuItem} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'
@@ -17,7 +17,9 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes, handleSlider, handleSave, showSave, save, colors }) => {
+class ControllerSetting extends Component {
+    render(){
+    const { classes, handleSlider, handleSave, showSave, save, colors } = this.props
     return <div>
         <Typography className={classes.title}>
             Color Settings
@@ -25,7 +27,7 @@ const ControllerText = ({ classes, handleSlider, handleSave, showSave, save, col
         {colors.length > 0 
             ? <Select value="color">
                 <MenuItem value="">--None--</MenuItem>
-                {colors.map(c => <MenuItem value={c.name}>{c.name}</MenuItem>)}
+                {colors.map(c => <MenuItem key={c.id} value={c.name}>{c.name}</MenuItem>)}
             </Select>
             : <h1>no colors</h1>}
         <Typography className={classes.text}>
@@ -42,6 +44,8 @@ const ControllerText = ({ classes, handleSlider, handleSave, showSave, save, col
         <ColorSlider handleSlider={handleSlider} color="green"/>
         {showSave ? <SaveForm save={save}/>: <Button onClick={handleSave}>Save</Button>}
     </div>
+    }
 }
 
-export default withStyles(styles)(ControllerText)
+
+export default withStyles(styles)(ControllerSetting)
