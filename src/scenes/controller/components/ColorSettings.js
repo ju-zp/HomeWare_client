@@ -23,10 +23,6 @@ const styles = () => ({
 
 class ColorSetting extends Component {
 
-    state = {
-        color: this.props.color
-    }
-
     handleChange = e => {
         let color
         if(e.target.value){
