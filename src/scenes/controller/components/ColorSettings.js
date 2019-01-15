@@ -1,5 +1,5 @@
 import React from'react'
-import { Typography, withStyles, Button} from '@material-ui/core';
+import { Typography, withStyles, Button, Select} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'
 
@@ -22,7 +22,11 @@ const ControllerText = ({ classes, handleSlider, handleSave, showSave, save, col
         <Typography className={classes.title}>
             Color Settings
         </Typography>
-        {colors.length > 0 ? <h1>colors</h1> : <h1>no colors</h1>}
+        {colors.length > 0 
+            ? <Select>
+                {colors.map(c => console.log(c))}
+            </Select>
+            : <h1>no colors</h1>}
         <Typography className={classes.text}>
             Red
         </Typography>

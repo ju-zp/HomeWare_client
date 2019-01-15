@@ -24,7 +24,8 @@ class Controller extends Component {
     }
 
     componentDidMount(){
-        this.setState({colors: API.getColors(localStorage.username)})
+        API.getColors(localStorage.username)
+            .then(data => this.setState({colors: data.colors}))
     }
 
     componentWillUnmount(){
@@ -62,7 +63,7 @@ class Controller extends Component {
     handleSave = name => {
         const color = {...this.state.color, name} 
         API.saveColor(color, localStorage.username)
-        this.setState({save: false})
+        this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
 
     render(){
