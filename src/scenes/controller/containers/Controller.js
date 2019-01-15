@@ -22,6 +22,10 @@ class Controller extends Component {
         save: false
     }
 
+    componentDidMount(){
+        API.getColors()
+    }
+
     componentWillUnmount(){
         clearInterval(this.state.interval)
     }
