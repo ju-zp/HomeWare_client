@@ -25,12 +25,14 @@ class ControllerSetting extends Component {
 
     render(){
         const { classes, handleSlider, handleSave, showSave, save, colors } = this.props
+        const { handleChange } = this
         return <div>
             <Typography className={classes.title}>
                 Color Settings
             </Typography>
             {colors.length > 0 
-                ? <Select value="color">
+                ? <Select value="color"
+                    onChange={handleChange}>
                     <MenuItem value="">--None--</MenuItem>
                     {colors.map(c => <MenuItem key={c.id} value={c.name}>{c.name}</MenuItem>)}
                 </Select>
