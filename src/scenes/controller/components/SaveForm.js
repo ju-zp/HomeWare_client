@@ -6,7 +6,11 @@ class SaveForm extends Component {
     state = {
         name: ''
     }
-    
+
+    handleChange = () => {
+        console.log('hello')
+    }
+
     render(){
         const { save } = this.props 
         return <div>
