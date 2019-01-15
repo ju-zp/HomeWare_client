@@ -23,7 +23,7 @@ class Controller extends Component {
     }
 
     componentDidMount(){
-        API.getColors()
+        API.getColors(localStorage.username)
     }
 
     componentWillUnmount(){
