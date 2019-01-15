@@ -7,8 +7,8 @@ class SaveForm extends Component {
         name: ''
     }
 
-    handleChange = () => {
-        console.log('hello')
+    handleChange = e => {
+        console.log(e.target.value)
     }
 
     render(){
