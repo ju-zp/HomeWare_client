@@ -50,18 +50,25 @@ class Controller extends Component {
             intervalVal: time})
     }
 
-    handleSave = () => {
+    handleSaveClick = () => {
         console.log('hello')
         this.setState({save: true})
     }
 
+    handleSave = () => {
+        console.log('save')
+        this.setState({save: false})
+    }
+
     render(){
-        const { handleSwitch, handleSlider, handleTemperatureInterval, handleSave } = this
-        const { intervalVal } = this.state
+        const { handleSwitch, handleSlider, handleTemperatureInterval, handleSaveClick, handleSave } = this
+        const { intervalVal, save } = this.state
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch}/>
             <ColorSettings handleSlider={handleSlider}
-                handleSave={handleSave}/>
+                handleSave={handleSaveClick}
+                showSave={save}
+                save={handleSave}/>
             <TemperatureInterval intervalValue={intervalVal} 
                 temperatureInterval={handleTemperatureInterval}/>
             <AmbientSwitch/>

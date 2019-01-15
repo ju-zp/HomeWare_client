@@ -1,6 +1,7 @@
 import React from'react'
 import { Typography, withStyles, Button} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
+import SaveForm from './SaveForm'
 
 const styles = () => ({
     title: {
@@ -16,7 +17,7 @@ const styles = () => ({
     
 })
 
-const ControllerText = ({ classes, handleSlider, handleSave }) => {
+const ControllerText = ({ classes, handleSlider, handleSave, showSave, save }) => {
     return <div>
         <Typography className={classes.title}>
             Color Settings
@@ -33,7 +34,7 @@ const ControllerText = ({ classes, handleSlider, handleSave }) => {
             Green
         </Typography>
         <ColorSlider handleSlider={handleSlider} color="green"/>
-        <Button onClick={handleSave}>Save</Button>
+        {showSave ? <SaveForm save={save}/>: <Button onClick={handleSave}>Save</Button>}
     </div>
 }
 

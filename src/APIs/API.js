@@ -6,6 +6,7 @@ class API {
         this.validateURL = this.baseURL + '/validate'
         this.signoutURL = this.baseURL + '/logout'
         this.reading = this.baseURL + '/reading'
+        this.saveColorURL = this.baseURL + '/color'
     }
 
     static signup(user) {
