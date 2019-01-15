@@ -36,7 +36,9 @@ class ControllerSetting extends Component {
             blue: e.target.value.blue
         }
         this.props.setColor(color)
-        HardwareAPI.setColor(color)
+        if(this.props.light){
+            HardwareAPI.setColor(color)
+        }
     }
 
     render(){
@@ -72,6 +74,7 @@ class ControllerSetting extends Component {
 
 const mapStateToProp = state => {
     return {
+        light: state.light,
         color: state.color
     }
 }
