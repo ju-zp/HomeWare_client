@@ -23,11 +23,24 @@ const styles = () => ({
 
 class ColorSetting extends Component {
 
+    state = {
+        color: this.props.color
+    }
+
     handleChange = e => {
-        const color = {
-            red: e.target.value.red,
-            green: e.target.value.green,
-            blue: e.target.value.blue
+        let color
+        if(e.target.value){
+            color = {
+                red: e.target.value.red,
+                green: e.target.value.green,
+                blue: e.target.value.blue
+            }
+        } else {
+            color = {
+                red: 255,
+                green: 255,
+                blue: 255
+            }
         }
         this.props.setColor(color)
         if(this.props.light){
