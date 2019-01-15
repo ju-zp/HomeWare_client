@@ -19,7 +19,8 @@ class Controller extends Component {
         },
         interval: null,
         intervalVal: 0, 
-        save: false
+        save: false,
+        colors: []
     }
 
     componentDidMount(){

@@ -59,11 +59,11 @@ class API {
     }
 
     static getColors(username){
-        fetch(this.getColorsURL, {
+        return fetch(this.getColorsURL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username})
-        }).then(resp => console.log(resp.json()))
+        }).then(resp => resp.json())
     }
 }
 
