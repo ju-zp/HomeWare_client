@@ -16,6 +16,7 @@ class App extends Component {
   state = {
     username: '',
     page: '',
+    interval: null
   }
 
 
@@ -32,6 +33,22 @@ class App extends Component {
     this.setState({ username: '', page: '' })
     this.props.history.push('/')
   }
+
+  handleTemperatureInterval = time => {
+    if(time === 0 && this.state.interval !== null){
+      clearInterval(this.state.interval)
+      this.setState({interval: null})
+    } else if(time !== 0){
+      HardwareAPI.getTemperature()
+            .then(data => API.sendReading(localStorage.username, data.reading))
+      this.setState({interval: setInterval(() => {
+        HardwareAPI.getTemperature()
+            .then(data => API.sendReading(localStorage.username, data.reading))
+        }, time * 1000),
+        intervalVal: time})
+    }
+}
+
  
   componentDidMount(){
     const username = localStorage.username
@@ -49,8 +66,12 @@ class App extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.state.interval)
+  }
+
   render() {
-    const { logIn, logOut, props } = this
+    const { logIn, logOut, props, handleTemperatureInterval } = this
     const { username, page } = this.state 
     return (
       <MuiThemeProvider>
@@ -58,7 +79,7 @@ class App extends Component {
           <NavBar username={username} logOut={logOut} page={page}/>
           <Route exact path='/' component={() => <Landing {...props} logIn={logIn}/>}/>
           <Route exact path='/login' component={() => <Login {...props} logIn={logIn}/>}/>
-          <Route exact path='/controller' component={() => <Controller  />}/>
+          <Route exact path='/controller' component={() => <Controller handleTemperatureInterval={handleTemperatureInterval} />}/>
         </div>
       </MuiThemeProvider>
     );
