@@ -8,3 +8,6 @@ export const SET_COLOR = 'SET_COLOR'
 //page actions
 export const SET_PAGE = 'SET_PAGE'
 
+//home actions
+export const SET_HOME = 'SET_HOME'
+
