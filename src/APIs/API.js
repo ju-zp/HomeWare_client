@@ -7,6 +7,7 @@ class API {
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'
         this.getColorsURL = this.baseURL + '/colors'
+        this.getEnvironmentURL = this.baseURL + '/environment'
     }
 
     static signup(user) {
@@ -55,6 +56,14 @@ class API {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username})
         }).then(resp => resp.json())
+    }
+
+    static getEnvironment(username){
+        return fetch(this.getEnvironmentURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username})
+        })
     }
 }
 
