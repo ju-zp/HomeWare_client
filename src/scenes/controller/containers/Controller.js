@@ -52,8 +52,12 @@ class Controller extends Component {
         this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
 
+    getTemperature = () => {
+        HardwareAPI.getTemperature()
+    }
+
     render(){
-        const { handleSwitch, handleSlider, handleSaveClick, handleSave } = this
+        const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature } = this
         const { intervalVal, save, colors } = this.state
         const { light, handleTemperatureInterval } = this.props
         console.log(this.props)
@@ -66,7 +70,7 @@ class Controller extends Component {
                 save={handleSave}
                 />
             <TemperatureInterval intervalValue={intervalVal} 
-                temperatureInterval={handleTemperatureInterval}/>
+                temperatureInterval={getTemperature}/>
             <AmbientSwitch/>
 
         </div>
