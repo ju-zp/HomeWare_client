@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import NavBar from './navigation/NavBar'
@@ -86,4 +88,10 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return{
+    interval: state.interval
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(App));
