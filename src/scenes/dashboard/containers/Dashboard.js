@@ -10,8 +10,6 @@ class Dashboard extends Component {
     componentDidMount() {
         API.getEnvironment(localStorage.username)
             .then(data => this.props.setHome(data.home))
-            // this.props.setHome(data.home)
-        // this.props.setHome()
     }
 
     render(){
