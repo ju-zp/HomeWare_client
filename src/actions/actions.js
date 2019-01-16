@@ -1,4 +1,4 @@
-import { SWITCH_ON, SWITCH_OFF, SET_COLOR } from './types'
+import { SWITCH_ON, SWITCH_OFF, SET_COLOR, SET_PAGE } from './types'
 
 //light actions
 export function switchOn() {
@@ -12,6 +12,11 @@ export function switchOff() {
 //color actions
 export function setColor(color){
     return { type: SET_COLOR, payload: color}
+}
+
+//page actions
+export function setPage(page){
+    return { type: SET_PAGE, payload: page}
 }
 
 

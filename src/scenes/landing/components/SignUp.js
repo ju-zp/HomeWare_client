@@ -44,7 +44,8 @@ class SignUp extends Component {
           console.log(resp.error)
         } else {
             this.props.logIn(this.state.username)
-            this.props.history.push('/controller')
+            this.props.setPage('/controller')
+            this.props.redirect()
             console.log("success")
         }
       }
