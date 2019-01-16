@@ -37,10 +37,10 @@ class App extends Component {
  
   componentDidMount(){
     HardwareAPI.switchOff()
-    this.state.interval = setInterval(() => {
+    this.setState({interval: setInterval(() => {
       HardwareAPI.getTemperature()
       .then(data => API.sendReading(localStorage.username, data.reading))
-    }, 30000)
+    }, 30000)})
     const username = localStorage.username
     if(username){
       API.validate(username)

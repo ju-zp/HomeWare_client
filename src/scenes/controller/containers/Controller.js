@@ -46,7 +46,6 @@ class Controller extends Component {
 
     handleSave = name => {
         const color = {...this.props.color, name} 
-        console.log(color)
         API.saveColor(color, localStorage.username)
         this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
@@ -59,7 +58,6 @@ class Controller extends Component {
         const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature } = this
         const { save, colors } = this.state
         const { light } = this.props
-        console.log(this.props)
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch} value={light}/>
             <ColorSettings handleSlider={handleSlider}
@@ -70,7 +68,6 @@ class Controller extends Component {
                 />
             <Temperature getTemperature={getTemperature}/>
             <AmbientSwitch/>
-
         </div>
     }
 }
@@ -78,8 +75,7 @@ class Controller extends Component {
 const mapStateToProps = state => {
     return {
         light: state.light,
-        color: state.color,
-        interval: state.interval
+        color: state.color
     }
 }
 
