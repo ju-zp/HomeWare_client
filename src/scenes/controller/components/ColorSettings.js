@@ -1,7 +1,11 @@
 import React, { Component } from'react'
+import { connect } from 'react-redux'
+
+import { setColor } from '../../../actions/actions'
 import { Typography, withStyles, Button, Select, MenuItem} from '@material-ui/core';
 import ColorSlider from './ColorSlider'
 import SaveForm from './SaveForm'
+import HardwareAPI from '../../../APIs/HardwareAPI'
 
 const styles = () => ({
     title: {
@@ -17,20 +21,27 @@ const styles = () => ({
     
 })
 
-class ControllerSetting extends Component {
-
-    state = {
-        red: 255,
-        green: 255,
-        blue: 255
-    }
+class ColorSetting extends Component {
 
     handleChange = e => {
-        this.setState({
-            red: e.target.value.red,
-            green: e.target.value.green,
-            blue: e.target.value.blue})
-        console.log(e.target.value)
+        let color
+        if(e.target.value){
+            color = {
+                red: e.target.value.red,
+                green: e.target.value.green,
+                blue: e.target.value.blue
+            }
+        } else {
+            color = {
+                red: 255,
+                green: 255,
+                blue: 255
+            }
+        }
+        this.props.setColor(color)
+        if(this.props.light){
+            HardwareAPI.setColor(color)
+        }
     }
 
     render(){
@@ -46,23 +57,36 @@ class ControllerSetting extends Component {
                     <MenuItem value="">--None--</MenuItem>
                     {colors.map(c => <MenuItem key={c.id} value={c}>{c.name}</MenuItem>)}
                 </Select>
-                : <h1>no colors</h1>}
+                : null }
             <Typography className={classes.text}>
                 Red
             </Typography>
-            <ColorSlider handleSlider={handleSlider} color="red"/>
+            <ColorSlider handleSlider={handleSlider} colorName="red"/>
             <Typography className={classes.text}>
                 Blue
             </Typography>
-            <ColorSlider handleSlider={handleSlider} color="blue"/>
+            <ColorSlider handleSlider={handleSlider} colorName="blue"/>
             <Typography className={classes.text}>
                 Green
             </Typography>
-            <ColorSlider handleSlider={handleSlider} color="green"/>
+            <ColorSlider handleSlider={handleSlider} colorName="green"/>
             {showSave ? <SaveForm save={save}/>: <Button onClick={handleSave}>Save</Button>}
         </div>
     }
 }
 
+const mapStateToProp = state => {
+    return {
+        light: state.light,
+        color: state.color
+    }
+}
 
-export default withStyles(styles)(ControllerSetting)
+const mapDispatchToProp = dispatch => {
+    return {
+        setColor: color => dispatch(setColor(color))
+    }
+}
+
+
+export default connect(mapStateToProp, mapDispatchToProp)(withStyles(styles)(ColorSetting))

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { switchOn, switchOff, setColor} from '../../../actions/actions'
 
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
@@ -11,13 +14,6 @@ import API from '../../../APIs/API'
 class Controller extends Component {
 
     state = {
-        on: false,
-        color: {
-            red: 255,
-            green: 255,
-            blue: 255
-        },
-        interval: null,
         intervalVal: 0, 
         save: false,
         colors: []
@@ -28,32 +24,21 @@ class Controller extends Component {
             .then(data => this.setState({colors: data.colors}))
     }
 
-    componentWillUnmount(){
-        clearInterval(this.state.interval)
-    }
-
     handleSwitch = (val) => {
-        this.setState({on: val})
         if(val){
-            HardwareAPI.setColor(this.state.color)
+            this.props.switchOn()
+            HardwareAPI.setColor(this.props.color)
         } else {
+            this.props.switchOff()
             HardwareAPI.switchOff()
         } 
     } 
 
     handleSlider = data => {
-        this.setState({color: {...this.state.color,[data.color]: data.value}})
-        if(this.state.on){
-            HardwareAPI.setColor(this.state.color)
+        this.props.setColor({...this.props.color, [data.color]: data.value})
+        if(this.props.light){
+            HardwareAPI.setColor(this.props.color)
         }
-    }
-
-    handleTemperatureInterval = time => {
-        this.setState({interval: setInterval(() => {
-            HardwareAPI.getTemperature()
-                .then(data => API.sendReading(localStorage.username, data.reading))
-            }, time * 1000),
-            intervalVal: time})
     }
 
     handleSaveClick = () => {
@@ -61,16 +46,19 @@ class Controller extends Component {
     }
 
     handleSave = name => {
-        const color = {...this.state.color, name} 
+        const color = {...this.props.color, name} 
+        console.log(color)
         API.saveColor(color, localStorage.username)
         this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
 
     render(){
-        const { handleSwitch, handleSlider, handleTemperatureInterval, handleSaveClick, handleSave } = this
+        const { handleSwitch, handleSlider, handleSaveClick, handleSave } = this
         const { intervalVal, save, colors } = this.state
+        const { light, handleTemperatureInterval } = this.props
+        console.log(this.props)
         return <div className="controller">
-            <LightSwitch handleSwitch={handleSwitch}/>
+            <LightSwitch handleSwitch={handleSwitch} value={light}/>
             <ColorSettings handleSlider={handleSlider}
                 colors={colors}
                 handleSave={handleSaveClick}
@@ -85,4 +73,20 @@ class Controller extends Component {
     }
 }
 
-export default Controller
+const mapStateToProps = state => {
+    return {
+        light: state.light,
+        color: state.color,
+        interval: state.interval
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        switchOn: () => dispatch(switchOn()),
+        switchOff: () => dispatch(switchOff()),
+        setColor: color => dispatch(setColor(color))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controller)
