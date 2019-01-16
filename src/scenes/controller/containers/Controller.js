@@ -5,7 +5,7 @@ import { switchOn, switchOff, setColor} from '../../../actions/actions'
 
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
-import TemperatureInterval from '../components/TemperatureInterval';
+import Temperature from '../components/Temperature';
 import AmbientSwitch from '../components/AmbientSwitch';
 import HardwareAPI from '../../../APIs/HardwareAPI'
 import API from '../../../APIs/API'
@@ -14,7 +14,6 @@ import API from '../../../APIs/API'
 class Controller extends Component {
 
     state = {
-        intervalVal: 0, 
         save: false,
         colors: []
     }
@@ -58,8 +57,8 @@ class Controller extends Component {
 
     render(){
         const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature } = this
-        const { intervalVal, save, colors } = this.state
-        const { light, handleTemperatureInterval } = this.props
+        const { save, colors } = this.state
+        const { light } = this.props
         console.log(this.props)
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch} value={light}/>
@@ -69,8 +68,7 @@ class Controller extends Component {
                 showSave={save}
                 save={handleSave}
                 />
-            <TemperatureInterval intervalValue={intervalVal} 
-                temperatureInterval={getTemperature}/>
+            <Temperature getTemperature={getTemperature}/>
             <AmbientSwitch/>
 
         </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
@@ -35,24 +34,13 @@ class App extends Component {
     this.setState({ username: '', page: '' })
     this.props.history.push('/')
   }
-
-  handleTemperatureInterval = time => {
-    if(time === 0 && this.state.interval !== null){
-      clearInterval(this.state.interval)
-      this.setState({interval: null})
-    } else if(time !== 0){
-      HardwareAPI.getTemperature()
-            .then(data => API.sendReading(localStorage.username, data.reading))
-      this.setState({interval: setInterval(() => {
-        HardwareAPI.getTemperature()
-            .then(data => API.sendReading(localStorage.username, data.reading))
-        }, time * 1000),
-        intervalVal: time})
-    }
-}
-
  
   componentDidMount(){
+    HardwareAPI.switchOff()
+    this.state.interval = setInterval(() => {
+      HardwareAPI.getTemperature()
+      .then(data => API.sendReading(localStorage.username, data.reading))
+    }, 30000)
     const username = localStorage.username
     if(username){
       API.validate(username)
@@ -69,6 +57,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    
     clearInterval(this.state.interval)
   }
 
@@ -88,10 +77,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return{
-    interval: state.interval
-  }
-}
-
-export default connect(mapStateToProps)(withRouter(App));
+export default withRouter(App);

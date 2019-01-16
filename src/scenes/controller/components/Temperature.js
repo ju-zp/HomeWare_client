@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, withStyles, Button, Select, MenuItem } from '@material-ui/core';
+import { Typography, withStyles, Button } from '@material-ui/core';
 
 const styles = () => ({
     title: {
@@ -15,14 +15,14 @@ const styles = () => ({
     
 })
 
-const TemperatureInterval = ({ classes, temperatureInterval }) => {
+const Temperature = ({ classes, getTemperature }) => {
     return <div>
         <Typography className={classes.title}>
             Temperature
         </Typography>
-        <Button onClick={() => temperatureInterval()}>Get</Button>
+        <Button onClick={() => getTemperature()}>Get</Button>
     </div>
 }
 
 
-export default withStyles(styles)(TemperatureInterval)
+export default withStyles(styles)(Temperature)
