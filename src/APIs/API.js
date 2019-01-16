@@ -4,7 +4,6 @@ class API {
         this.signupURL = this.baseURL + '/signup'
         this.loginURL = this.baseURL + '/login'
         this.validateURL = this.baseURL + '/validate'
-        this.signoutURL = this.baseURL + '/logout'
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'
         this.getColorsURL = this.baseURL + '/colors'
@@ -32,14 +31,6 @@ class API {
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ username: username })
         }).then(resp => resp.json())
-    }
-
-    static signout(username) {
-        fetch(this.signoutURL, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ username: username })
-        })
     }
 
     static sendReading(username, temp) {

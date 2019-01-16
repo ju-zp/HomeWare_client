@@ -29,7 +29,6 @@ class App extends Component {
 
   logOut = () => {
     localStorage.removeItem('username')
-    API.signout(this.state.username)
     HardwareAPI.logout()
     this.setState({ username: '', page: '' })
     this.props.history.push('/')
@@ -57,7 +56,6 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    
     clearInterval(this.state.interval)
   }
 
