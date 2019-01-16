@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
+import Environment from '../components/Environment'
+
 class Dashboard extends Component {
 
     render(){
-        return <h1>Dashboard</h1>
+        return <div>
+            <Environment />
+        </div>
     }
 }
 

@@ -28,6 +28,17 @@
   margin: auto;
 }
 
+.environment {
+  background-color: #D3D3D3;
+  border-radius: 25px;
+  width: 90%;
+  height: 50%;
+  margin: 2%;
+  border: 3px solid #004857;
+  padding: 10px;
+  /* margin: auto; */
+}
+
 .controller {
   text-align: center;
   margin-top: 5%;

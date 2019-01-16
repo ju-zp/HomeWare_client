@@ -20,7 +20,6 @@ class App extends Component {
 
   state = {
     username: '',
-    page: '',
     interval: null,
     redirect: false
   }
@@ -29,13 +28,13 @@ class App extends Component {
   logIn = username => {
     localStorage.setItem('username', username)
     HardwareAPI.welcome(username)
-    this.setState({ username, page: 'Controller' })
+    this.setState({ username })
   }
 
   logOut = () => {
     localStorage.removeItem('username')
     HardwareAPI.logout()
-    this.setState({ username: '', page: '' })
+    this.setState({ username: ''})
     this.props.history.push('/')
   }
 
@@ -55,8 +54,8 @@ class App extends Component {
         .then(resp => {
           if(!resp.error){
             this.logIn(username)
-            this.props.setPage('/controller')
-            this.setState({page: 'Controller', redirect: true})
+            this.props.setPage('/dashboard')
+            this.setState({ redirect: true })
           }
         })
     } 
@@ -71,7 +70,7 @@ class App extends Component {
 
   render() {
     const { logIn, logOut, props, handleTemperatureInterval, handleRedirect } = this
-    const { username, page } = this.state 
+    const { username } = this.state 
     if(this.state.redirect){
       this.props.history.push(this.props.page)
       this.setState({redirect: false})
