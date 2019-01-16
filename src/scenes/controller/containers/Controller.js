@@ -19,6 +19,8 @@ class Controller extends Component {
     }
 
     componentDidMount(){
+        // this.props.history.push(this.props.page)
+        // console.log(this.props)
         API.getColors(localStorage.username)
             .then(data => this.setState({colors: data.colors}))
     }
@@ -75,7 +77,8 @@ class Controller extends Component {
 const mapStateToProps = state => {
     return {
         light: state.light,
-        color: state.color
+        color: state.color,
+        page: state.page
     }
 }
 
