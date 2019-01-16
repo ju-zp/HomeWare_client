@@ -11,7 +11,7 @@ class Environment extends Component {
             <h1>{this.props.home}</h1>
             <h1>Connected devices:</h1>
             <ul>
-                
+                {this.props.boards.map(board => <li>{board}</li>)}
             </ul>
         </div>
     }

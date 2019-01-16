@@ -25,7 +25,7 @@ export function setHome(home){
 }
 
 //board actions
-export function setBoard(boards){
+export function setBoards(boards){
     return { type: SET_BOARDS, payload: boards}
 }
 
