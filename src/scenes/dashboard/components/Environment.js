@@ -6,7 +6,7 @@ import API from '../../../APIs/API'
 class Environment extends Component {
 
     componentDidMount() {
-        API.getEnvironment(localStorage.username)
+       
     }
 
     render(){
