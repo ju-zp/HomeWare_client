@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, withRouter, Redirect } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { setPage } from './actions/actions'
@@ -55,10 +55,8 @@ class App extends Component {
         .then(resp => {
           if(!resp.error){
             this.logIn(username)
-            this.props.setPage('/controller')  
+            this.props.setPage('/controller')
             this.setState({page: 'Controller', redirect: true})
-            this.props.history.push(this.props.page)
-            
           }
         })
     } 
@@ -74,7 +72,6 @@ class App extends Component {
   render() {
     const { logIn, logOut, props, handleTemperatureInterval, handleRedirect } = this
     const { username, page } = this.state 
-    console.log(this.props)
     if(this.state.redirect){
       this.props.history.push(this.props.page)
       this.setState({redirect: false})
@@ -82,9 +79,9 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <NavBar username={username} logOut={logOut} page={page}/>
+          <NavBar username={username} logOut={logOut} page={this.props.page} redirect={handleRedirect}/>
           <Route exact path='/' component={() => <Landing {...props} logIn={logIn} redirect={handleRedirect}/>}/>
-          <Route exact path='/login' component={() => <Login {...props} logIn={logIn}/>}/>
+          <Route exact path='/login' component={() => <Login {...props} redirect={handleRedirect} logIn={logIn}/>}/>
           <Route exact path='/controller' component={() => <Controller {...props} handleTemperatureInterval={handleTemperatureInterval} />}/>
           <Route exact path='/dashboard' component={() => <Dashboard {...props}/>}/>
         </div>

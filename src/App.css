@@ -5,7 +5,11 @@
 
 .mainTitle {
   color: white;
-  margin-right: 45%;
+  margin-right: 50%;
+}
+
+.navMenu {
+  margin-right: 35%
 }
 
 .title {

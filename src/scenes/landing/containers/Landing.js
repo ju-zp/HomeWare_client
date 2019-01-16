@@ -9,7 +9,7 @@ class Landing extends Component {
         const { props } = this
         return <div className='app'>
             <h1 >Welcome to HomeWare</h1>
-            <SignUp {...props} title={"Sign Up"}/>
+            <SignUp {...props} redirect={this.props.redirect} title={"Sign Up"}/>
             <div className="loginLink"
                 onClick={() => {
                     this.props.setPage('/login')
