@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { switchOn, switchOff, setColor, setInterval } from '../../../actions/actions'
+import { switchOn, switchOff, setColor} from '../../../actions/actions'
 
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
@@ -14,7 +14,6 @@ import API from '../../../APIs/API'
 class Controller extends Component {
 
     state = {
-        interval: null,
         intervalVal: 0, 
         save: false,
         colors: []
@@ -23,10 +22,6 @@ class Controller extends Component {
     componentDidMount(){
         API.getColors(localStorage.username)
             .then(data => this.setState({colors: data.colors}))
-    }
-
-    componentWillUnmount(){
-        clearInterval(this.state.interval)
     }
 
     handleSwitch = (val) => {
@@ -46,17 +41,6 @@ class Controller extends Component {
         }
     }
 
-    handleTemperatureInterval = time => {
-        this.props.setInterval(setInterval(() => {
-            console.log('hello')
-        }, 1000))
-        // this.setState({interval: setInterval(() => {
-        //     HardwareAPI.getTemperature()
-        //         .then(data => API.sendReading(localStorage.username, data.reading))
-        //     }, time * 1000),
-        //     intervalVal: time})
-    }
-
     handleSaveClick = () => {
         this.setState({save: true})
     }
@@ -69,9 +53,10 @@ class Controller extends Component {
     }
 
     render(){
-        const { handleSwitch, handleSlider, handleTemperatureInterval, handleSaveClick, handleSave } = this
+        const { handleSwitch, handleSlider, handleSaveClick, handleSave } = this
         const { intervalVal, save, colors } = this.state
-        const { light } = this.props
+        const { light, handleTemperatureInterval } = this.props
+        console.log(this.props)
         return <div className="controller">
             <LightSwitch handleSwitch={handleSwitch} value={light}/>
             <ColorSettings handleSlider={handleSlider}
