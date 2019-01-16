@@ -8,6 +8,8 @@ import NavBar from './navigation/NavBar'
 import Landing from './scenes/landing/containers/Landing'
 import Login from './scenes/login/Login'
 import Controller from './scenes/controller/containers/Controller'
+import Dashboard from './scenes/dashboard/containers/Dashboard'
+
 import API from './APIs/API'
 import HardwareAPI from './APIs/HardwareAPI'
 
@@ -47,7 +49,7 @@ class App extends Component {
           if(!resp.error){
             this.logIn(username)
             this.setState({page: 'Controller'})
-            this.props.history.push('/controller')
+                   
           }
         })
     } else{
@@ -69,6 +71,7 @@ class App extends Component {
           <Route exact path='/' component={() => <Landing {...props} logIn={logIn}/>}/>
           <Route exact path='/login' component={() => <Login {...props} logIn={logIn}/>}/>
           <Route exact path='/controller' component={() => <Controller handleTemperatureInterval={handleTemperatureInterval} />}/>
+          <Route exact path='/dashboard' component={Dashboard}/>
         </div>
       </MuiThemeProvider>
     );
