@@ -70,7 +70,6 @@ class SignUp extends Component {
                     className={classes.button}
                     onClick={handleLogIn}>Submit</Button>
             </FormControl>
-            
         </div>
     }
 }

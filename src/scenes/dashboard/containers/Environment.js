@@ -16,13 +16,11 @@ class Environment extends Component {
                 this.props.setHome(data.name)
                 this.props.setBoards(data.boards)
                 this.props.setUsers(data.users)
-                console.log(data)
             })
     }
 
     render(){
         const { home, boards, users } = this.props
-        // console.log(home)
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
             <Users users={users}/>
