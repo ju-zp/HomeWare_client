@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import BoardTabs from '../components/BoardTabs'
 import Users from '../components/Users'
-import { setHome, setBoards} from '../../../actions/actions'
+import { setHome, setBoards, setUsers} from '../../../actions/actions'
 import API from '../../../APIs/API'
 
 
@@ -15,16 +15,17 @@ class Environment extends Component {
             .then(data => {
                 this.props.setHome(data.name)
                 this.props.setBoards(data.boards)
+                this.props.setUsers(data.users)
                 console.log(data)
             })
     }
 
     render(){
-        const { home, boards } = this.props
+        const { home, boards, users } = this.props
         // console.log(home)
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
-            <Users home={home}/>
+            <Users users={users}/>
             <BoardTabs boards={boards}/>
         </div>
     }
@@ -34,14 +35,16 @@ class Environment extends Component {
 const mapStateToProps = state => {
     return{
         home: state.home,
-        boards: state.board
+        boards: state.board,
+        users: state.user
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return { 
         setHome: home => dispatch(setHome(home)),
-        setBoards: boards => dispatch(setBoards(boards))
+        setBoards: boards => dispatch(setBoards(boards)),
+        setUsers: users => dispatch(setUsers(users))
     }
 }
 

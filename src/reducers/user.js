@@ -1,9 +1,11 @@
 const user = (state = [], action) => {
     switch(action.type){
         case 'SET_USERS':
-            return action.type.map(u => u.username)
+            return action.payload.map(u => u.username)
         
         default: 
-            state
+            return state
     }
 }
+
+export default user

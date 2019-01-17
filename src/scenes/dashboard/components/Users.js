@@ -8,9 +8,11 @@ class Users extends Component{
         // API.getUsers(this.props.home.id)
     }
     render(){
-        console.log(this.props.home)
         return <div className='usersContainer'>
-            <h3>Users</h3>
+            <h3>Users: </h3>
+            <ul>
+                {this.props.users.map(u => <li>{u}</li>)}
+            </ul>
         </div>
     }
 }
