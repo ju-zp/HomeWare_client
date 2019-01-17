@@ -9,6 +9,7 @@ class API {
         this.getColorsURL = this.baseURL + '/colors'
         this.getEnvironmentURL = this.baseURL + '/environment'
         this.getUsersURL = this.baseURL + '/users'
+        this.getTemperatureDataURL = this.baseURL + '/temperatures'
     }
 
     static signup(user) {
@@ -73,6 +74,10 @@ class API {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({home})
         })
+    }
+
+    static getTemperatureData(){
+        return fetch(this.getTemperatureDataURL)
     }
 }
 
