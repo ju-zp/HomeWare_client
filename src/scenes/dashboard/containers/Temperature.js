@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import API from '../../../APIs/API'
+import SmallGraph from '../components/SmallGraph';
 
 class Temperature extends Component {
 
@@ -14,8 +15,10 @@ class Temperature extends Component {
     }
 
     render(){
+        console.log(this.state)
         return <div className='temperatureContainer'>
-            <h1>Temperature</h1>
+            <h3>Temperature:</h3>
+            <SmallGraph data={this.state.data}/>
         </div>
     }
 }
