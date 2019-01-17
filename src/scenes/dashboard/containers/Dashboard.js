@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Environment from '../components/Environment'
-import { setHome, setBoards } from '../../../actions/actions'
+import { setHome, setBoards, setLights } from '../../../actions/actions'
 import API from '../../../APIs/API'
 
 class Dashboard extends Component {
@@ -25,14 +25,16 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
     return{
         home: state.home,
-        board: state.board
+        board: state.board,
+        lights: state.lights
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return { 
         setHome: home => dispatch(setHome(home)),
-        setBoards: boards => dispatch(setBoards(boards))
+        setBoards: boards => dispatch(setBoards(boards)),
+        setLights: lights => dispatch(setLights(lights))
     }
 }
 
