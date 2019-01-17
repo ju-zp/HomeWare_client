@@ -19,10 +19,11 @@ class Environment extends Component {
     }
 
     render(){
+        const { home, boards } = this.props
         return <div className='environment'>  
-            <h1 className='homeTitle'>{this.props.home}</h1>
-            <Users/>
-            <BoardTabs boards={this.props.boards}/>
+            <h1 className='homeTitle'>{home}</h1>
+            <Users home={home}/>
+            <BoardTabs boards={boards}/>
         </div>
     }
 }
