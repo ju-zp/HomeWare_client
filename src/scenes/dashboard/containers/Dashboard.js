@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Environment from '../components/Environment'
+import Environment from './Environment'
 import { setHome, setBoards} from '../../../actions/actions'
 import API from '../../../APIs/API'
 
@@ -10,14 +10,12 @@ class Dashboard extends Component {
     componentDidMount() {
         API.getEnvironment(localStorage.username)
             .then(data => {
-                // console.log(data.boards[0].lights[0].switched_on)
                 this.props.setHome(data.name)
                 this.props.setBoards(data.boards)
             })
     }
 
     render(){
-        {this.props.boards[0]?console.log(this.props.boards[0]): console.log("null")}
         return <div>
             <Environment home={this.props.home} boards={this.props.boards}/>
         </div>
