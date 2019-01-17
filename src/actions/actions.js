@@ -1,4 +1,4 @@
-import { SWITCH_ON, SWITCH_OFF, SET_COLOR, SET_PAGE } from './types'
+import { SWITCH_ON, SWITCH_OFF, SET_COLOR, SET_PAGE, SET_HOME, SET_BOARDS} from './types'
 
 //light actions
 export function switchOn() {
@@ -18,5 +18,16 @@ export function setColor(color){
 export function setPage(page){
     return { type: SET_PAGE, payload: page}
 }
+
+//home actions
+export function setHome(home){
+    return { type: SET_HOME, payload: home}
+}
+
+//board actions
+export function setBoards(boards){
+    return { type: SET_BOARDS, payload: boards}
+}
+
 
 
