@@ -76,8 +76,9 @@ class API {
         })
     }
 
-    static getTemperatureData(){
+    static getTemperatureData(username){
         return fetch(this.getTemperatureDataURL)
+            .then(resp => resp.json())
     }
 }
 

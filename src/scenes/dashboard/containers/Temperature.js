@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import API from '../../../APIs/API'
+
 class Temperature extends Component {
 
     state = {
@@ -7,7 +9,8 @@ class Temperature extends Component {
     }
 
     componentDidMount() {
-        
+        API.getTemperatureData()
+            .then(data => this.setState({data: data.data}))
     }
 
     render(){
