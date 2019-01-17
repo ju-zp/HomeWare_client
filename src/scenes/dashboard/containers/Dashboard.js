@@ -9,15 +9,17 @@ class Dashboard extends Component {
 
     componentDidMount() {
         API.getEnvironment(localStorage.username)
-            .then(data => {this.props.setHome(data.home)
+            .then(data => {
+                // console.log(data.boards[0].lights[0].switched_on)
+                this.props.setHome(data.name)
                 this.props.setBoards(data.boards)
             })
     }
 
     render(){
-        console.log(this.props.home)
+        {this.props.boards[0]?console.log(this.props.boards[0]): console.log("null")}
         return <div>
-            <Environment home={this.props.home} boards={this.props.board}/>
+            <Environment home={this.props.home} boards={this.props.boards}/>
         </div>
     }
 }
@@ -25,7 +27,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
     return{
         home: state.home,
-        board: state.board
+        boards: state.board
     }
 }
 
