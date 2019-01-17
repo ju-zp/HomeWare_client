@@ -33,6 +33,7 @@ class BoardTabs extends Component {
         const { boards } = this.props
         let count = 0
         return <div className='boardTabs'>
+            <h3>Connected devices ({boards.length}):</h3>
             <Tabs value={value} onChange={handleChange}>
                 {boards.map(board => <Tab label={board.name}/>)}
             </Tabs>
