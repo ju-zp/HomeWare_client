@@ -41,12 +41,18 @@ class App extends Component {
   handleRedirect = () => {
     this.setState({redirect: true})
   }
+
+  cancelRedirect = () => {
+    this.setState({redirect: false})
+  }
  
   componentDidMount(){
     HardwareAPI.switchOff()
     this.setState({interval: setInterval(() => {
-      HardwareAPI.getTemperature()
-      .then(data => API.sendReading(localStorage.username, data.reading))
+      if(localStorage.username){
+        HardwareAPI.getTemperature()
+          .then(data => API.sendReading(localStorage.username, data.reading))
+      }
     }, 30000)})
     const username = localStorage.username
     if(username){
@@ -73,7 +79,7 @@ class App extends Component {
     const { username } = this.state 
     if(this.state.redirect){
       this.props.history.push(this.props.page)
-      this.setState({redirect: false})
+      this.cancelRedirect()
     }
     return (
       <MuiThemeProvider>

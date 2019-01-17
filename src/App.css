@@ -32,10 +32,29 @@
   background-color: #D3D3D3;
   border-radius: 25px;
   width: 90%;
+  margin: 2%;
+  border: 3px solid #004857;
+  padding: 10px;
+}
+
+.temperatureContainer {
+  background-color: #D3D3D3;
+  border-radius: 25px;
+  width: 40%;
   height: 50%;
   margin: 2%;
   border: 3px solid #004857;
   padding: 10px;
+}
+
+.homeTitle {
+  position: relative;
+}
+
+.usersContainer {
+  position: absolute;
+  left: 60%;
+  top: 26.7%;
 }
 
 .boardTabs {

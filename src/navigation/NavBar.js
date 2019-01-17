@@ -94,11 +94,3 @@ const mapStateToProps = state => {
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
-{/* <AppBar
-                    style={{
-                    backgroundColor: '#004857'}}
-                    onClick={handleClick}
-                >
-                    <Title title={page}/>
-                    <Button style={{color: 'white'}} onClick={logOut}>LogOut</Button>
-                </AppBar> */}

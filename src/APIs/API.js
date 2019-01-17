@@ -8,6 +8,8 @@ class API {
         this.saveColorURL = this.baseURL + '/color'
         this.getColorsURL = this.baseURL + '/colors'
         this.getEnvironmentURL = this.baseURL + '/environment'
+        this.getUsersURL = this.baseURL + '/users'
+        this.getTemperatureDataURL = this.baseURL + '/temperatures'
     }
 
     static signup(user) {
@@ -64,6 +66,19 @@ class API {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username})
         }).then(resp => resp.json())
+    }
+
+    static getUsers(home){
+        return fetch(this.getUsersURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({home})
+        })
+    }
+
+    static getTemperatureData(username){
+        return fetch(this.getTemperatureDataURL)
+            .then(resp => resp.json())
     }
 }
 

@@ -14,4 +14,7 @@ export const SET_HOME = 'SET_HOME'
 //board actions
 export const SET_BOARDS = 'SET_BOARDS'
 
+//user actions
+export const SET_USERS = 'SET_USERS'
+
 

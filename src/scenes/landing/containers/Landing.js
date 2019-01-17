@@ -5,15 +5,18 @@ import SignUp from '../components/SignUp'
 
 class Landing extends Component {
 
+    handleClick = () => {
+        this.props.setPage('/login')
+        this.props.redirect()
+    } 
+
     render(){
-        const { props } = this
+        const { props, handleClick } = this
         return <div className='app'>
             <h1 >Welcome to HomeWare</h1>
             <SignUp {...props} redirect={this.props.redirect} title={"Sign Up"}/>
             <div className="loginLink"
-                onClick={() => {
-                    this.props.setPage('/login')
-                    this.props.redirect()}}>
+                onClick={handleClick}>
             <Link to='/login' activestyle={{color:'black'}}>Login</Link>
             </div>
         </div>
