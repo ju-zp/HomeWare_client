@@ -38,6 +38,16 @@
   padding: 10px;
 }
 
+.homeTitle {
+  position: relative;
+}
+
+.usersContainer {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+}
+
 .boardTabs {
   margin-left: 5%;
 }
