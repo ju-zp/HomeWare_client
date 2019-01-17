@@ -36,7 +36,10 @@
   margin: 2%;
   border: 3px solid #004857;
   padding: 10px;
-  /* margin: auto; */
+}
+
+.boardTabs {
+  margin-left: 5%;
 }
 
 .controller {
