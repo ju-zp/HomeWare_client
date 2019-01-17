@@ -38,13 +38,19 @@ class Environment extends Component {
     render(){
         const { handleChange } = this
         const { value } = this.state
+        let count = 0
         return <div className='environment'>  
             <h1>{this.props.home}</h1>
             <h1>Connected devices:</h1>
             <Tabs value={value} onChange={handleChange}>
             {this.props.boards.map(board => <Tab label={board.name}/>)}
             </Tabs>
-            {value === 0 &&  this.props.boards[value] ? this.renderBoardInfo(value): null}
+            {this.props.boards[0] ? 
+            value === count && this.props.boards.map(b => {
+                count++
+                return this.renderBoardInfo(value)
+                })
+            : null}
         </div>
     }
 }
