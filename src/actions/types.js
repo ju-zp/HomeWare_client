@@ -14,3 +14,6 @@ export const SET_HOME = 'SET_HOME'
 //board actions
 export const SET_BOARDS = 'SET_BOARDS'
 
+//light actions
+export const SET_LIGHTS = 'SET_LIGHTS'
+

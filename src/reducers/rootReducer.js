@@ -4,6 +4,7 @@ import color from './color'
 import page from './page'
 import home from './home'
 import board from './board'
+import lights from './lights'
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     color,
     page,
     home, 
-    board
+    board,
+    lights
 })
 
 export default rootReducer
