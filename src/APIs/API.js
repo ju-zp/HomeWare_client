@@ -10,6 +10,7 @@ class API {
         this.getEnvironmentURL = this.baseURL + '/environment'
         this.getUsersURL = this.baseURL + '/users'
         this.getTemperatureDataURL = this.baseURL + '/temperatures'
+        this.getWeatherURL = this.baseURL + '/weather'
     }
 
     static signup(user) {
@@ -79,6 +80,10 @@ class API {
     static getTemperatureData(username){
         return fetch(this.getTemperatureDataURL)
             .then(resp => resp.json())
+    }
+
+    static getWeather(){
+        fetch(this.getWeatherURL)
     }
 }
 

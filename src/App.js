@@ -3,7 +3,7 @@ import './App.css';
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { setPage } from './actions/actions'
+import { setPage, setWeather } from './actions/actions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import NavBar from './navigation/NavBar'
@@ -14,6 +14,7 @@ import Dashboard from './scenes/dashboard/containers/Dashboard'
 
 import API from './APIs/API'
 import HardwareAPI from './APIs/HardwareAPI'
+import WeatherAPI from './APIs/WeatherAPI'
 
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
   }
  
   componentDidMount(){
+    API.getWeather()
     HardwareAPI.switchOff()
     this.setState({interval: setInterval(() => {
       if(localStorage.username){
@@ -103,7 +105,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setPage: page => dispatch(setPage(page))
+    setPage: page => dispatch(setPage(page)),
+    setWeather: weather => dispatch(setWeather(weather))
   }
 }
 

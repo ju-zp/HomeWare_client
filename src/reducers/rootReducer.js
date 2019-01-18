@@ -5,6 +5,7 @@ import page from './page'
 import home from './home'
 import board from './board'
 import user from './user'
+import weather from './weather'
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     page,
     home, 
     board,
-    user
+    user,
+    weather
 })
 
 export default rootReducer

@@ -17,4 +17,7 @@ export const SET_BOARDS = 'SET_BOARDS'
 //user actions
 export const SET_USERS = 'SET_USERS'
 
+//weather actions
+export const SET_WEATHER = 'SET_WEATHER'
+
 

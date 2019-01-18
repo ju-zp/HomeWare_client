@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
+
 import Environment from './Environment'
 import Temperature from './Temperature'
 
 
 class Dashboard extends Component {
+
+    componentDidMount() {
+        
+    }
 
 
     render(){
