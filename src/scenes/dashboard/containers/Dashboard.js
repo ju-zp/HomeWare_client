@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+
 
 
 import Environment from './Environment'
@@ -10,7 +10,6 @@ import Weather from './Weather'
 class Dashboard extends Component {
 
     render(){
-        console.log(this.props.weather)
         return <div>
             <Environment/>
             <Temperature/>
@@ -19,12 +18,8 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return{ 
-        weather: state.weather
-    }
-}
 
 
 
-export default connect(mapStateToProps)(Dashboard)
+
+export default Dashboard
