@@ -36,7 +36,7 @@ export function setUsers(users){
 
 //weather actions
 export function setWeather(weather){
-    return { type: SET_WEATHER, paylod: weather}
+    return { type: SET_WEATHER, payload: weather}
 }
 
 

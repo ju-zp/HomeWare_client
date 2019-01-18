@@ -14,7 +14,6 @@ import Dashboard from './scenes/dashboard/containers/Dashboard'
 
 import API from './APIs/API'
 import HardwareAPI from './APIs/HardwareAPI'
-import WeatherAPI from './APIs/WeatherAPI'
 
 
 class App extends Component {
@@ -49,6 +48,7 @@ class App extends Component {
  
   componentDidMount(){
     API.getWeather()
+      .then(data => this.props.setWeather(data.weather))
     HardwareAPI.switchOff()
     this.setState({interval: setInterval(() => {
       if(localStorage.username){

@@ -83,7 +83,8 @@ class API {
     }
 
     static getWeather(){
-        fetch(this.getWeatherURL)
+        return fetch(this.getWeatherURL)
+            .then(resp => resp.json())
     }
 }
 
