@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import Environment from './Environment'
 import Temperature from './Temperature'
+import Weather from './Weather'
 
 
 class Dashboard extends Component {
@@ -13,6 +14,7 @@ class Dashboard extends Component {
         return <div>
             <Environment/>
             <Temperature/>
+            <Weather/>
         </div>
     }
 }
