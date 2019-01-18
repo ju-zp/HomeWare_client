@@ -25,15 +25,14 @@ class Temperature extends Component {
     render(){
         const { data, value } = this.state
         const { onChange } = this
-        const short = data.slice(data.length-30, data.length)
         return <div className='temperatureContainer'>
             <h3>Temperature:</h3>
             <Tabs value={value} onChange={onChange}>
                 <Tab label='Last 15 mins'></Tab>
                 <Tab label='Last hour'></Tab>
             </Tabs>
-            {value === 0 &&  <SmallGraph data={short}/>}
-            {value === 1 && <LargeGraph data={data}/>}
+            {value === 0 &&  <SmallGraph />}
+            {value === 1 && <LargeGraph />}
            
         </div>
     }

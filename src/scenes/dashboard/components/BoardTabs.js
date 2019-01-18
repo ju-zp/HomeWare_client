@@ -20,7 +20,7 @@ class BoardTabs extends Component {
             <ol>
                 {lights.map(l => <li>Status:{l.switched_on? " on":" off"}</li>)}
             </ol>
-            <h3>Tmperature Senors ({temperatures.length}):</h3>
+            <h3>Temperature Sensors ({temperatures.length}):</h3>
             <ol>
                 {temperatures.map(t => <li>Interval: {t.interval} seconds</li>)}
             </ol>
