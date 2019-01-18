@@ -36,7 +36,6 @@ class Weather extends Component {
     }
 
     render(){
-        console.log(this.props)
         return <div className='weatherContainer'>
             <h3>Weather:</h3>
             {this.props.weather.currently 
