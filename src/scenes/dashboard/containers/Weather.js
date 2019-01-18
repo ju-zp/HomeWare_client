@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 class Weather extends Component {
     render(){
-        return <div>
-            <h1>weather</h1>
+        return <div className='weatherContainer'>
+            <h3>Weather</h3>
         </div>
     }
 }
