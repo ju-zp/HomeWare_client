@@ -6,12 +6,20 @@ import { VictoryChart, VictoryLine, VictoryAxis, VictoryTheme } from 'victory'
 class SmallGraph extends Component {
 
     state = {
-        data: []
+        data: [],
     }
 
     componentDidMount() {
         API.getTemperatureData()
-            .then(data => this.setState({data: data.data}))
+            .then(data => {
+                if(this.state.isMounted){
+                this.setState({data: data.data})
+                }
+            })
+    }
+
+    componentWillUnmount(){
+        this.setState({isMounted: false})
     }
 
     render(){
