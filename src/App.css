@@ -40,11 +40,33 @@
 .temperatureContainer {
   background-color: #D3D3D3;
   border-radius: 25px;
-  width: 40%;
-  height: 50%;
+  width: 45%;
   margin: 2%;
   border: 3px solid #004857;
   padding: 10px;
+}
+
+.weatherContainer {
+  position: absolute;
+  right: 4%;
+  top: 77%;
+  background-color: #D3D3D3;
+  border-radius: 25px;
+  width: 40%;
+  height: 80%;
+  margin: 2%;
+  border: 3px solid #004857;
+  padding: 10px;
+}
+
+.weatherContent {
+  position: absolute;
+}
+
+.icon {
+  position: relative;
+  width: 40%;
+  left: 50%;
 }
 
 .homeTitle {

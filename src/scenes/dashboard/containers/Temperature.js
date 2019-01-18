@@ -13,27 +13,36 @@ class Temperature extends Component {
         value: 0
     }
 
+    isMounted
+
     componentDidMount() {
         API.getTemperatureData()
-            .then(data => this.setState({data: data.data}))
+            .then(data => {
+                if(this.state.isMounted)
+                this.setState({data: data.data})
+            })
     }
 
     onChange = (e, value) => {
         this.setState({value})
     }
 
+    componentWillUnmount(){
+        this.setState({isMounted: false})
+    }
+
+
     render(){
         const { data, value } = this.state
         const { onChange } = this
-        const short = data.slice(data.length-30, data.length)
         return <div className='temperatureContainer'>
             <h3>Temperature:</h3>
             <Tabs value={value} onChange={onChange}>
                 <Tab label='Last 15 mins'></Tab>
                 <Tab label='Last hour'></Tab>
             </Tabs>
-            {value === 0 &&  <SmallGraph data={short}/>}
-            {value === 1 && <LargeGraph data={data}/>}
+            {value === 0 &&  <SmallGraph />}
+            {value === 1 && <LargeGraph />}
            
         </div>
     }

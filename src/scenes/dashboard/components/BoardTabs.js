@@ -15,14 +15,14 @@ class BoardTabs extends Component {
     renderBoardInfo = value => {
         const lights = this.props.boards[value].lights
         const temperatures = this.props.boards[value].temperatures
-        return <div>
+        return <div key={value}>
             <h3>Lights ({lights.length}): </h3>
             <ol>
-                {lights.map(l => <li>Status:{l.switched_on? " on":" off"}</li>)}
+                {lights.map(l => <li key={l.id}>Status:{l.switched_on? " on":" off"}</li>)}
             </ol>
-            <h3>Tmperature Senors ({temperatures.length}):</h3>
+            <h3>Temperature Sensors ({temperatures.length}):</h3>
             <ol>
-                {temperatures.map(t => <li>Interval: {t.interval} seconds</li>)}
+                {temperatures.map(t => <li key={t.id}>Interval: {t.interval} seconds</li>)}
             </ol>
         </div>
     }
@@ -35,7 +35,7 @@ class BoardTabs extends Component {
         return <div className='boardTabs'>
             <h3>Connected devices ({boards.length}):</h3>
             <Tabs value={value} onChange={handleChange}>
-                {boards.map(board => <Tab label={board.name}/>)}
+                {boards.map(board => <Tab key={board.id} label={board.name}/>)}
             </Tabs>
             {boards[0] ? 
             value === count && boards.map(b => {

@@ -1,4 +1,4 @@
-import { SWITCH_ON, SWITCH_OFF, SET_COLOR, SET_PAGE, SET_HOME, SET_BOARDS, SET_USERS} from './types'
+import { SWITCH_ON, SWITCH_OFF, SET_COLOR, SET_PAGE, SET_HOME, SET_BOARDS, SET_USERS, SET_WEATHER} from './types'
 
 //light actions
 export function switchOn() {
@@ -32,6 +32,11 @@ export function setBoards(boards){
 //user actions
 export function setUsers(users){
     return { type: SET_USERS, payload: users}
+}
+
+//weather actions
+export function setWeather(weather){
+    return { type: SET_WEATHER, payload: weather}
 }
 
 
