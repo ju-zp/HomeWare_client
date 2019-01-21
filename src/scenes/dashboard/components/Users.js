@@ -11,7 +11,6 @@ class Users extends Component{
     handleClick = username => {
         API.deleteUser(username)
         this.props.getUsers()
-        console.log(username)
     }
 
     render(){
@@ -20,7 +19,7 @@ class Users extends Component{
         return <div className='usersContainer'>
             <h3>Users: </h3>
             <ul>
-                {users.map(u => <li key={u}>{u}<Button onClick={() => handleClick(u)}>Edit</Button></li>)}
+                {users.map(u => <li key={u}>{u} <br></br>{u === 'admin' ? null : <Button onClick={() => handleClick(u)}>Delete</Button>}</li>)}
             </ul>
             <UserForm getUsers={getUsers}/>
         </div>
