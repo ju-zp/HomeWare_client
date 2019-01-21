@@ -28,6 +28,7 @@ class HomeForm extends Component {
                 />
             <br></br>
             <Button onClick={handleClick}>Submit</Button>
+            <Button onClick={() => this.props.hideForm()}>Cancel</Button>
         </div>
     }
 }

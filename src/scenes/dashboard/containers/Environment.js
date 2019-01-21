@@ -39,13 +39,17 @@ class Environment extends Component {
         this.props.setHome(name)
     }
 
+    hideForm = () => {
+        this.setState({show: false})
+    }
+
     render(){
-        const { getUsers, handleClick, handleSubmit } = this
+        const { getUsers, handleClick, handleSubmit, hideForm } = this
         const { home, boards, users } = this.props
         const { show } = this.state
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
-            {show ? <HomeForm submit={handleSubmit}/> : <Button onClick={handleClick}>Edit</Button>}
+            {show ? <HomeForm submit={handleSubmit} hideForm={hideForm}/> : <Button onClick={handleClick}>Edit</Button>}
             <Users users={users} getUsers={getUsers}/>
             <BoardTabs boards={boards}/>
         </div>
