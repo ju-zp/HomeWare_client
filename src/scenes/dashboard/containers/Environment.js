@@ -43,15 +43,25 @@ class Environment extends Component {
         this.setState({show: false})
     }
 
+    handleBoardEdit = () => {
+        API.getEnvironment(localStorage.username)
+            .then(data => {
+                this.props.setHome(data.name)
+                this.props.setBoards(data.boards)
+                this.props.setUsers(data.users)
+            })
+    }
+        
+
     render(){
-        const { getUsers, handleClick, handleSubmit, hideForm } = this
+        const { getUsers, handleClick, handleSubmit, hideForm, handleBoardEdit } = this
         const { home, boards, users } = this.props
         const { show } = this.state
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
             {show ? <HomeForm submit={handleSubmit} hideForm={hideForm}/> : <Button onClick={handleClick}>Edit</Button>}
             <Users users={users} getUsers={getUsers}/>
-            <BoardTabs boards={boards}/>
+            <BoardTabs boards={boards} boardEdit={handleBoardEdit}/>
         </div>
     }
 }

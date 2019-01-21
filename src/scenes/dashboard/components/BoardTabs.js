@@ -21,6 +21,8 @@ class BoardTabs extends Component {
 
     hideForm = () => {
         this.setState({show: false})
+        this.props.boardEdit()
+        
     }
 
     renderBoardInfo = (value, board) => {
@@ -37,7 +39,7 @@ class BoardTabs extends Component {
             <ol>
                 {temperatures.map(t => <li key={t.id}>Interval: {t.interval} seconds</li>)}
             </ol>
-            {show ? <BoardForm board={board} hideForm={hideForm}/> : <Button onClick={handleClick}>Edit</Button>}
+            {show ? <BoardForm board={board} hideForm={hideForm} /> : <Button onClick={handleClick}>Edit</Button>}
             
         </div>
     }
