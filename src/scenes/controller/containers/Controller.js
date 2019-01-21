@@ -36,13 +36,14 @@ class Controller extends Component {
     }
 
     handleSwitch = (val) => {
+        API.setLight(val)
         if(val){
             this.props.switchOn()
             HardwareAPI.setColor(this.props.color)
         } else {
             this.props.switchOff()
             HardwareAPI.switchOff()
-        } 
+        }
     } 
 
     handleSlider = data => {
