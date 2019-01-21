@@ -6,6 +6,7 @@ class API {
         this.validateURL = this.baseURL + '/validate'
         this.createUserURL = this.baseURL + '/create'
         this.deleteUserURL = this.baseURL + '/destroy'
+        this.editHomeURL = this.baseURL + '/edit'
         this.setLightURL = this.baseURL + '/setLight'
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'
@@ -53,6 +54,14 @@ class API {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username: username})
+        }).then(resp => resp.json())
+    }
+
+    static editHome(name, username){
+        return fetch(this.editHomeURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({home: name, username})
         }).then(resp => resp.json())
     }
 
