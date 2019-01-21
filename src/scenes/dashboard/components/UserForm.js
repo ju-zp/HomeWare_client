@@ -13,7 +13,7 @@ class UserForm extends Component {
     handleSubmit = () => {
         API.createUser(this.state, localStorage.username)
         this.setState({username: '', password: ''})
-        this.props.getUsers()
+        this.props.hideForm()
     }
 
     handleChange = e => {
@@ -24,7 +24,6 @@ class UserForm extends Component {
         const { handleChange, handleSubmit } = this
         const { username, password } = this.state
         return <div>
-            <h3>Add user:</h3>
             <TextField label='username'
                 name='username'
                 value={username}
