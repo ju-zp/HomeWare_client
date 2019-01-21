@@ -19,11 +19,17 @@ class Environment extends Component {
             })
     }
 
+    getUsers = () => {
+        API.getEnvironment(localStorage.username)
+            .then(data => this.props.setUsers(data.users))
+    }
+
     render(){
+        const { getUsers } = this
         const { home, boards, users } = this.props
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
-            <Users users={users}/>
+            <Users users={users} getUsers={getUsers}/>
             <BoardTabs boards={boards}/>
         </div>
     }

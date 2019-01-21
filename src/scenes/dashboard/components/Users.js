@@ -11,13 +11,14 @@ class Users extends Component{
     }
 
     render(){
-        const { handleClick } = this 
+        const { handleClick } = this
+        const { users, getUsers } = this.props
         return <div className='usersContainer'>
             <h3>Users: </h3>
             <ul>
-                {this.props.users.map(u => <li key={u}>{u}<Button onClick={() =>handleClick()}>Edit</Button></li>)}
+                {users.map(u => <li key={u}>{u}<Button onClick={() =>handleClick()}>Edit</Button></li>)}
             </ul>
-            <UserForm/>
+            <UserForm getUsers={getUsers}/>
         </div>
     }
 }

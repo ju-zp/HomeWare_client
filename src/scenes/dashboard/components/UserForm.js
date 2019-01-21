@@ -11,7 +11,8 @@ class UserForm extends Component {
     }
 
     handleSubmit = () => {
-        API.createUser(this.state)
+        API.createUser(this.state, localStorage.username)
+        this.props.getUsers()
     }
 
     handleChange = e => {
