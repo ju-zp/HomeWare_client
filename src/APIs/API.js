@@ -5,6 +5,7 @@ class API {
         this.loginURL = this.baseURL + '/login'
         this.validateURL = this.baseURL + '/validate'
         this.createUserURL = this.baseURL + '/create'
+        this.deleteUserURL = this.baseURL + '/destroy'
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'
         this.getColorsURL = this.baseURL + '/colors'
@@ -43,15 +44,23 @@ class API {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({user: user, username: username})
-        })
+        }).then(resp => resp.json())
     } 
+
+    static deleteUser(username) {
+        return fetch(this.deleteUserURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username: username})
+        })
+    }
 
     static sendReading(username, temp) {
         fetch(this.reading, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body : JSON.stringify({ username: username, reading: temp})
-        }).then(resp => console.log(resp.json()))
+        }).then(resp => resp.json())
     }
 
     static saveColor(color, username){
