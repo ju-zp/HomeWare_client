@@ -13,18 +13,33 @@ class Weather extends Component {
         return <div>
             <div className='weatherContent'>
                 <h4>Summary:</h4>
-                <ul><li><h4>{currently.summary}</h4></li></ul>
+                <ul>
+                    <li>
+                        <h4>{currently.summary}</h4>
+                    </li>
+                </ul>
                 <h4>Temperature:</h4>
                 <ul>
-                    <li><h4>Actual: {currently.temperature}C</h4></li>
-                    <li><h4>Feels like: {currently.apparentTemperature}C</h4></li>
+                    <li>
+                        <h4>Actual: {currently.temperature}C</h4>
+                    </li>
+                    <li>
+                        <h4>Feels like: {currently.apparentTemperature}C</h4>
+                    </li>
                 </ul>
                 <h4>Humidity:</h4>
-                <ul><li><h4>{currently.humidity}%</h4></li></ul>
+                <ul>
+                    <li>
+                        <h4>{currently.humidity}%</h4>
+                    </li>
+                </ul>
                 <h4>Visibility:</h4>
-                <ul><li><h4>{currently.visibility} KM</h4></li></ul>
-                <a href='https://darksky.net/poweredby/' target='_blank' rel="noopener noreferrer"><h4>Powered by Dark Sky</h4></a>
-                
+                <ul>
+                    <li>
+                        <h4>{currently.visibility} KM</h4>
+                    </li>
+                </ul>
+                <a href='https://darksky.net/poweredby/' target='_blank' rel="noopener noreferrer"><h4>Powered by Dark Sky</h4></a>  
             </div>
             <div className='icon'>
                 <Skycons color='black'
@@ -36,13 +51,11 @@ class Weather extends Component {
     }
 
     render(){
-        console.log(this.props)
         return <div className='weatherContainer'>
-            <h3>Weather:</h3>
+            <h3>Weather</h3>
             {this.props.weather.currently 
             ? this.renderWeather()
             : null}
-            
         </div>
     }
 }

@@ -64,9 +64,10 @@
 }
 
 .icon {
-  position: relative;
-  width: 40%;
+  position: absolute;
+  width: 50%;
   left: 50%;
+  top: 30%;
 }
 
 .homeTitle {

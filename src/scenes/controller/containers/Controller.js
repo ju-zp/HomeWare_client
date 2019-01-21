@@ -13,14 +13,27 @@ import API from '../../../APIs/API'
 
 class Controller extends Component {
 
+    constructor(props){
+        super(props)
+        this._isMounted = false
+    }
+
     state = {
         save: false,
         colors: []
     }
 
     componentDidMount(){
+        this._isMounted = true
         API.getColors(localStorage.username)
-            .then(data => this.setState({colors: data.colors}))
+            .then(data => {
+                if(this._isMounted){
+                    this.setState({colors: data.colors})
+                }})
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false
     }
 
     handleSwitch = (val) => {

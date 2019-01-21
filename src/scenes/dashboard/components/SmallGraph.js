@@ -5,21 +5,28 @@ import { VictoryChart, VictoryLine, VictoryAxis, VictoryTheme } from 'victory'
 
 class SmallGraph extends Component {
 
-    state = {
-        data: [],
+    constructor(props){
+        super(props)
+        this._isMounted = false
     }
 
+    state = {
+        data: []
+    }
+
+
     componentDidMount() {
+        this._isMounted = true
         API.getTemperatureData()
             .then(data => {
-                if(this.state.isMounted){
+                if(this._isMounted){
                 this.setState({data: data.data})
                 }
             })
     }
 
     componentWillUnmount(){
-        this.setState({isMounted: false})
+        this._isMounted = false 
     }
 
     render(){
