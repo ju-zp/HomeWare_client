@@ -29,10 +29,13 @@ class UserForm extends Component {
                 name='username'
                 value={username}
                 onChange={handleChange}/>
+            <br></br>
             <TextField label='password'
+                type='password'
                 name='password'
                 value={password}
                 onChange={handleChange}/>
+            <br></br>
             <Button onClick={handleSubmit}>Submit</Button>
         </div>
     }
