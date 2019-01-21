@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { Button } from '@material-ui/core'
 import BoardTabs from '../components/BoardTabs'
 import Users from '../components/Users'
 import { setHome, setBoards, setUsers} from '../../../actions/actions'
@@ -29,6 +30,7 @@ class Environment extends Component {
         const { home, boards, users } = this.props
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
+            <Button>Edit</Button>
             <Users users={users} getUsers={getUsers}/>
             <BoardTabs boards={boards}/>
         </div>
