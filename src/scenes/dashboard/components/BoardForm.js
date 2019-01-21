@@ -2,7 +2,16 @@ import React, { Component } from 'react'
 
 class BoardForm extends Component {
 
+    state = {
+        name: ''
+    }
+
+    handleChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     render(){
+        const { handleChange } = this
         return <div>
             <TextField label='name'
                 name='name'

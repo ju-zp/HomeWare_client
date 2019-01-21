@@ -17,6 +17,10 @@ class BoardTabs extends Component {
         this.setState({show: true})
     }
 
+    hideForm = () => {
+        this.setState({show: false})
+    }
+
     renderBoardInfo = value => {
         const lights = this.props.boards[value].lights
         const temperatures = this.props.boards[value].temperatures
