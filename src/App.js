@@ -50,6 +50,7 @@ class App extends Component {
   componentDidMount(){
     API.getWeather()
       .then(data => this.props.setWeather(data.weather))
+      .catch(data => console.log(data))
     HardwareAPI.switchOff()
     API.setLight(false)
     this.setState({interval: setInterval(() => {

@@ -12,7 +12,6 @@ class UserForm extends Component {
 
     handleSubmit = () => {
         API.createUser(this.state, localStorage.username)
-        this.setState({username: '', password: ''})
         this.props.hideForm()
     }
 

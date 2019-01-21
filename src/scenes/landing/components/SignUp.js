@@ -56,7 +56,7 @@ class SignUp extends Component {
         const { title} = this.props
         return <div className='form'>
             <p className={classes.text}>{title}</p>
-            <FormControl fullWidth={true}>
+            <FormControl >
                 <TextField label='username'
                     name='username'
                     margin='dense'
