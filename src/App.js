@@ -88,7 +88,6 @@ class App extends Component {
         <div>
           <NavBar username={username} logOut={logOut} page={this.props.page} redirect={handleRedirect}/>
           <Route exact path='/' component={() => <Landing {...props} logIn={logIn} redirect={handleRedirect}/>}/>
-          <Route exact path='/login' component={() => <Login {...props} redirect={handleRedirect} logIn={logIn}/>}/>
           <Route exact path='/controller' component={() => <Controller {...props} handleTemperatureInterval={handleTemperatureInterval} />}/>
           <Route exact path='/dashboard' component={() => <Dashboard {...props}/>}/>
         </div>
