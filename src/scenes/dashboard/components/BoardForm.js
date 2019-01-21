@@ -4,7 +4,7 @@ import { TextField, Button } from '@material-ui/core'
 
 import API from '../../../APIs/API'
 
-class HomeForm extends Component {
+class BoardForm extends Component {
 
     state = {
         name: ''
@@ -15,8 +15,9 @@ class HomeForm extends Component {
     }
 
     handleClick = () => {
-        API.editHome(this.state.name, localStorage.username)
-            .then(data => this.props.submit(data.name))
+        API.editBoard(this.state.name, this.props.board.id)
+            .then(data => this.props.hideForm())
+        
     }
 
     render(){
@@ -33,4 +34,4 @@ class HomeForm extends Component {
     }
 }
 
-export default HomeForm
+export default BoardForm
