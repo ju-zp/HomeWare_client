@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import { TextField, Button, FormControl } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
+import API from '../../../APIs/API'
 
 class UserForm extends Component {
 
@@ -10,7 +11,7 @@ class UserForm extends Component {
     }
 
     handleSubmit = () => {
-
+        API.createUser(this.state)
     }
 
     handleChange = e => {
@@ -18,7 +19,7 @@ class UserForm extends Component {
     }
 
     render(){
-        const { handleChange } = this
+        const { handleChange, handleSubmit } = this
         return <div>
             <h3>Add user:</h3>
             <TextField label='username'
@@ -27,7 +28,7 @@ class UserForm extends Component {
             <TextField label='password'
                 name='password'
                 onChange={handleChange}/>
-            <Button>Submit</Button>
+            <Button onClick={handleSubmit}>Submit</Button>
         </div>
     }
 }
