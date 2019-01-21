@@ -26,6 +26,7 @@
   border: 3px solid #004857;
   padding: 10px;
   margin: auto;
+  animation: fadein 2s;
 }
 
 .environment {
@@ -132,6 +133,11 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes App-logo-spin {
