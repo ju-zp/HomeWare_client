@@ -6,7 +6,6 @@ import { switchOn, switchOff, setColor} from '../../../actions/actions'
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
 import Temperature from '../components/Temperature';
-import AmbientSwitch from '../components/AmbientSwitch';
 import HardwareAPI from '../../../APIs/HardwareAPI'
 import API from '../../../APIs/API'
 
@@ -37,13 +36,14 @@ class Controller extends Component {
     }
 
     handleSwitch = (val) => {
+        API.setLight(val)
         if(val){
             this.props.switchOn()
             HardwareAPI.setColor(this.props.color)
         } else {
             this.props.switchOff()
             HardwareAPI.switchOff()
-        } 
+        }
     } 
 
     handleSlider = data => {
@@ -60,7 +60,8 @@ class Controller extends Component {
     handleSave = name => {
         const color = {...this.props.color, name} 
         API.saveColor(color, localStorage.username)
-        this.setState({save: false, colors: API.getColors(localStorage.username)})
+            .then(data => this.setState({save: false, colors: data.colors}))
+        // this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
 
     getTemperature = () => {
@@ -80,7 +81,6 @@ class Controller extends Component {
                 save={handleSave}
                 />
             <Temperature getTemperature={getTemperature}/>
-            <AmbientSwitch/>
         </div>
     }
 }

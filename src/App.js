@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import NavBar from './navigation/NavBar'
 import Landing from './scenes/landing/containers/Landing'
-import Login from './scenes/login/Login'
+import Login from './scenes/landing/components/Login'
 import Controller from './scenes/controller/containers/Controller'
 import Dashboard from './scenes/dashboard/containers/Dashboard'
 
@@ -34,6 +34,7 @@ class App extends Component {
   logOut = () => {
     localStorage.removeItem('username')
     HardwareAPI.logout()
+    API.setLight(false)
     this.setState({ username: ''})
     this.props.history.push('/')
   }
@@ -50,6 +51,7 @@ class App extends Component {
     API.getWeather()
       .then(data => this.props.setWeather(data.weather))
     HardwareAPI.switchOff()
+    API.setLight(false)
     this.setState({interval: setInterval(() => {
       if(localStorage.username){
         HardwareAPI.getTemperature()
