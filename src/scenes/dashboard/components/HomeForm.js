@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { TextField, Button } from '@material-ui/core'
 
+import API from '../../../APIs/API'
+
 class HomeForm extends Component {
 
     state = {
@@ -13,7 +15,8 @@ class HomeForm extends Component {
     }
 
     handleClick = () => {
-
+        API.editHome(this.state.name, localStorage.username)
+            .then(data => this.props.submit(data.name))
     }
 
     render(){
@@ -23,8 +26,8 @@ class HomeForm extends Component {
                 name='name'
                 onChange={handleChange}
                 />
+            <br></br>
             <Button onClick={handleClick}>Submit</Button>
-            <h1>edit me boi</h1>
         </div>
     }
 }
