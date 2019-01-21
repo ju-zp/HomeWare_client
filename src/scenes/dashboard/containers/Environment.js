@@ -4,12 +4,17 @@ import { connect } from 'react-redux'
 import { Button } from '@material-ui/core'
 import BoardTabs from '../components/BoardTabs'
 import Users from '../components/Users'
+import HomeForm from '../components/HomeForm'
 import { setHome, setBoards, setUsers} from '../../../actions/actions'
 import API from '../../../APIs/API'
 
 
 
 class Environment extends Component {
+
+    state = {
+        show: false
+    }
 
     componentDidMount() {
         API.getEnvironment(localStorage.username)
@@ -25,12 +30,18 @@ class Environment extends Component {
             .then(data => this.props.setUsers(data.users))
     }
 
+    handleClick = () => {
+        console.log('hello')
+    }
+
     render(){
-        const { getUsers } = this
+        const { getUsers, handleClick } = this
         const { home, boards, users } = this.props
+        const { show } = this.state
         return <div className='environment'>  
             <h1 className='homeTitle'>{home}</h1>
-            <Button>Edit</Button>
+            <Button onClick={handleClick}>Edit</Button>
+            {show ? <HomeForm/> : null}
             <Users users={users} getUsers={getUsers}/>
             <BoardTabs boards={boards}/>
         </div>
