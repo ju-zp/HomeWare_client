@@ -6,7 +6,7 @@ class API {
         this.validateURL = this.baseURL + '/validate'
         this.createUserURL = this.baseURL + '/create'
         this.deleteUserURL = this.baseURL + '/destroy'
-        this.editHomeURL = this.baseURL + '/edit'
+        this.editHomeURL = this.baseURL + '/homeEdit'
         this.setLightURL = this.baseURL + '/setLight'
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'

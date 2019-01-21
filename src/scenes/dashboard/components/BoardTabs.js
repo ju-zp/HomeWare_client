@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import BoardForm from './BoardForm'
+
 import { Tabs, Tab, Button } from '@material-ui/core'
 
 class BoardTabs extends Component {
@@ -21,10 +23,10 @@ class BoardTabs extends Component {
         this.setState({show: false})
     }
 
-    renderBoardInfo = value => {
+    renderBoardInfo = (value, board) => {
         const lights = this.props.boards[value].lights
         const temperatures = this.props.boards[value].temperatures
-        const { handleClick } = this
+        const { handleClick, hideForm } = this
         const { show } = this.state
         return <div key={value}>
             <h3>Lights ({lights.length}): </h3>
@@ -35,7 +37,7 @@ class BoardTabs extends Component {
             <ol>
                 {temperatures.map(t => <li key={t.id}>Interval: {t.interval} seconds</li>)}
             </ol>
-            {show ? null : <Button onClick={handleClick}>Edit</Button>}
+            {show ? <BoardForm board={board} hideForm={hideForm}/> : <Button onClick={handleClick}>Edit</Button>}
             
         </div>
     }
@@ -53,7 +55,7 @@ class BoardTabs extends Component {
             {boards[0] ? 
             value === count && boards.map(b => {
                 count++
-                return this.renderBoardInfo(value)
+                return this.renderBoardInfo(value, b)
                 })
             : null}
         </div>
