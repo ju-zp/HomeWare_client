@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SignUp from '../landing/components/SignUp'
+import SignUp from './SignUp'
 
 
 

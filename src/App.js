@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import NavBar from './navigation/NavBar'
 import Landing from './scenes/landing/containers/Landing'
-import Login from './scenes/login/Login'
+import Login from './scenes/landing/components/Login'
 import Controller from './scenes/controller/containers/Controller'
 import Dashboard from './scenes/dashboard/containers/Dashboard'
 
