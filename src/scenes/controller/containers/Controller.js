@@ -6,7 +6,6 @@ import { switchOn, switchOff, setColor} from '../../../actions/actions'
 import LightSwitch from '../components/LightSwitch';
 import ColorSettings from '../components/ColorSettings';
 import Temperature from '../components/Temperature';
-import AmbientSwitch from '../components/AmbientSwitch';
 import HardwareAPI from '../../../APIs/HardwareAPI'
 import API from '../../../APIs/API'
 
@@ -80,7 +79,6 @@ class Controller extends Component {
                 save={handleSave}
                 />
             <Temperature getTemperature={getTemperature}/>
-            <AmbientSwitch/>
         </div>
     }
 }
