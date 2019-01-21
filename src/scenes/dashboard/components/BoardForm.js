@@ -10,8 +10,12 @@ class BoardForm extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    handleClick = () => {
+
+    }
+
     render(){
-        const { handleChange } = this
+        const { handleChange, handleClick } = this
         return <div>
             <TextField label='name'
                 name='name'
