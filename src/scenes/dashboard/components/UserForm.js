@@ -23,6 +23,7 @@ class UserForm extends Component {
     render(){
         const { handleChange, handleSubmit } = this
         const { username, password } = this.state
+        const { hideForm } = this.props
         return <div>
             <TextField label='username'
                 name='username'
@@ -36,6 +37,7 @@ class UserForm extends Component {
                 onChange={handleChange}/>
             <br></br>
             <Button onClick={handleSubmit}>Submit</Button>
+            <Button onClick={() => hideForm()}>Cancel</Button>
         </div>
     }
 }
