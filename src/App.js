@@ -100,8 +100,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    page: state.page,
-    light: state.light
+    page: state.page
   }
 }
 
