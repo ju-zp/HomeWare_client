@@ -31,7 +31,7 @@ class Environment extends Component {
     }
 
     handleClick = () => {
-        console.log('hello')
+        this.setState({show: true})
     }
 
     render(){
