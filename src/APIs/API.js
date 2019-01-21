@@ -7,6 +7,7 @@ class API {
         this.createUserURL = this.baseURL + '/create'
         this.deleteUserURL = this.baseURL + '/destroy'
         this.editHomeURL = this.baseURL + '/homeEdit'
+        this.editBoardURL = this.baseURL + '/boardsEdit'
         this.setLightURL = this.baseURL + '/setLight'
         this.reading = this.baseURL + '/reading'
         this.saveColorURL = this.baseURL + '/color'
@@ -63,6 +64,14 @@ class API {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({home: name, username})
         }).then(resp => resp.json())
+    }
+
+    static editBoard(name, board){
+        return fetch(this.editBoardURL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({name, board})
+        })
     }
 
     static setLight(state) {

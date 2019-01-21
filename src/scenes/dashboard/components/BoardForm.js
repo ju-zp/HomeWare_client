@@ -15,6 +15,7 @@ class BoardForm extends Component {
     }
 
     handleClick = () => {
+        API.editBoard(this.state.name, this.props.board)
 
     }
 
