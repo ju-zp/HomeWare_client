@@ -19,7 +19,7 @@ class Temperature extends Component {
         const { value } = this.state
         const { onChange } = this
         return <div className='temperatureContainer'>
-            <h3>Temperature:</h3>
+            <h3>Temperature</h3>
             <Tabs value={value} onChange={onChange}>
                 <Tab label='Last 15 mins'></Tab>
                 <Tab label='Last hour'></Tab>

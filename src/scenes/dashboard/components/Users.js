@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { Button } from '@material-ui/core';
+import UserForm from './UserForm'
 
 
 class Users extends Component{
@@ -14,8 +15,9 @@ class Users extends Component{
         return <div className='usersContainer'>
             <h3>Users: </h3>
             <ul>
-                {this.props.users.map(u => <li key={u}>{u}<Button onClick={handleClick}>Edit</Button></li>)}
+                {this.props.users.map(u => <li key={u}>{u}<Button onClick={() =>handleClick()}>Edit</Button></li>)}
             </ul>
+            <UserForm/>
         </div>
     }
 }
