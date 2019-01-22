@@ -23,7 +23,7 @@ const styles = {
     button: {
         backgroundColor: '#004857',
         color: 'white',
-        marginRight: '1%',
+        marginRight: '5%',
         '&:hover': {
             color: '#004E59',
             borderColor: '#004E59',

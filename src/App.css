@@ -10,7 +10,7 @@
 }
 
 .navMenu {
-  margin-right: 35%
+  margin-right: 40%
 }
 
 .title {
@@ -39,6 +39,7 @@
 }
 
 .temperatureContainer {
+  float: left;
   background-color: #D3D3D3;
   border-radius: 25px;
   width: 45%;
@@ -47,28 +48,27 @@
   padding: 10px;
 }
 
+.container {
+  width: 100%;
+}
+
 .weatherContainer {
-  position: absolute;
-  right: 4%;
-  top: 100%;
+  display: flex;
+  align-items: center;
   background-color: #D3D3D3;
   border-radius: 25px;
-  width: 40%;
-  height: 80%;
-  margin: 2%;
+  width: 42%;
+  height: 470%;
+  margin-top: 4%;
+  margin-left: 50%;
   border: 3px solid #004857;
   padding: 10px;
 }
 
-.weatherContent {
-  position: absolute;
-}
-
 .icon {
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  top: 30%;
+  margin-left: 10%;
+  width: 450px;
+  height: 250px;
 }
 
 .homeTitle {
@@ -99,7 +99,7 @@
 }
 
 .sliders {
-  width: 300px;
+  width: 65%;
 }
 
 .controllerText {

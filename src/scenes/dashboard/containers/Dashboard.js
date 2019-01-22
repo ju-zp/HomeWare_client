@@ -26,7 +26,7 @@ class Dashboard extends Component {
             </Typography>
             <Environment/>
             <Temperature/>
-            <Weather/>
+            <Weather />
         </div>
     }
 }
