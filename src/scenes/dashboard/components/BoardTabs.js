@@ -12,6 +12,17 @@ const styles = {
     list: {
         fontSize: '15px',
         color: '#004857'
+    },
+    button: {
+        backgroundColor: '#004E59',
+        color: 'white',
+        marginTop: '1%',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
     }
 }
 
@@ -51,7 +62,7 @@ class BoardTabs extends Component {
             <ol>
                 {temperatures.map(t => <li key={t.id} className={classes.list}>Interval: {t.interval} seconds</li>)}
             </ol>
-            {show ? <BoardForm board={board} hideForm={hideForm} /> : <Button onClick={handleClick}>Edit</Button>}
+            {show ? <BoardForm board={board} hideForm={hideForm} /> : <Button className={classes.button} variant='outlined' onClick={handleClick}>Edit</Button>}
             
         </div>
     }
@@ -64,7 +75,7 @@ class BoardTabs extends Component {
         return <div className='boardTabs'>
             <Typography className={classes.title}>Connected devices ({boards.length}):</Typography>
             <Tabs value={value} onChange={handleChange}>
-                {boards.map(board => <Tab key={board.id} label={board.name}/>)}
+                {boards.map(board => <Tab className={classes.list}key={board.id} label={board.name}/>)}
             </Tabs>
             {boards[0] ? 
             value === count && boards.map(b => {
