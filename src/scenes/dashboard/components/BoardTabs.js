@@ -53,17 +53,41 @@ class BoardTabs extends Component {
         const { handleClick, hideForm } = this
         const { show } = this.state
         const { classes } = this.props
-        return <div key={value} style={{marginTop: '2%'}}>
-            <Typography className={classes.title}>Lights ({lights.length}): </Typography>
+        return <div key={value} 
+            style={{marginTop: '2%'}}>
+            <Typography className={classes.title}>
+                Lights ({lights.length}): 
+            </Typography>
             <ol>
-                {lights.map(l => <li key={l.id} className={classes.list}>Status:{l.switched_on? " on":" off"}</li>)}
+                {lights.map(l => <li key={l.id} 
+                    className={classes.list}>
+                        Status:
+                        {l.switched_on ? 
+                            " on"
+                            :" off"
+                        }
+                    </li>)
+                }
             </ol>
-            <Typography className={classes.title}>Temperature Sensors ({temperatures.length}):</Typography>
+            <Typography className={classes.title}>
+                Temperature Sensors ({temperatures.length}):
+            </Typography>
             <ol>
-                {temperatures.map(t => <li key={t.id} className={classes.list}>Interval: {t.interval} seconds</li>)}
+                {temperatures.map(t => <li key={t.id} 
+                    className={classes.list}>
+                        Interval: {t.interval} seconds
+                    </li>)}
             </ol>
-            {show ? <BoardForm board={board} hideForm={hideForm} /> : <Button className={classes.button} variant='outlined' onClick={handleClick}>Edit</Button>}
-            
+            {show 
+            ? <BoardForm board={board} 
+                hideForm={hideForm}
+            /> 
+            : <Button className={classes.button} 
+                variant='outlined' 
+                onClick={handleClick}
+                >
+                Edit
+            </Button>}
         </div>
     }
 
@@ -73,9 +97,17 @@ class BoardTabs extends Component {
         const { boards, classes } = this.props
         let count = 0
         return <div className='boardTabs'>
-            <Typography className={classes.title}>Connected devices ({boards.length}):</Typography>
-            <Tabs value={value} onChange={handleChange}>
-                {boards.map(board => <Tab className={classes.list}key={board.id} label={board.name}/>)}
+            <Typography className={classes.title}>
+                Connected devices ({boards.length}):
+            </Typography>
+            <Tabs value={value} 
+                onChange={handleChange}
+                >
+                {boards.map(board => <Tab className={classes.list}
+                    key={board.id} 
+                    label={board.name}
+                />)
+                }
             </Tabs>
             {boards[0] ? 
             value === count && boards.map(b => {
