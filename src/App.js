@@ -3,12 +3,11 @@ import './App.css';
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { setPage, setWeather } from './actions/actions'
+import { setPage, setWeather, switchOff } from './actions/actions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import NavBar from './navigation/NavBar'
 import Landing from './scenes/landing/containers/Landing'
-import Login from './scenes/landing/components/Login'
 import Controller from './scenes/controller/containers/Controller'
 import Dashboard from './scenes/dashboard/containers/Dashboard'
 
@@ -35,6 +34,7 @@ class App extends Component {
     localStorage.removeItem('username')
     HardwareAPI.logout()
     API.setLight(false)
+    this.props.switchOff()
     this.setState({ username: ''})
     this.props.history.push('/')
   }
@@ -50,6 +50,7 @@ class App extends Component {
   componentDidMount(){
     API.getWeather()
       .then(data => this.props.setWeather(data.weather))
+      .catch(data => console.log(data))
     HardwareAPI.switchOff()
     API.setLight(false)
     this.setState({interval: setInterval(() => {
@@ -107,7 +108,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setPage: page => dispatch(setPage(page)),
-    setWeather: weather => dispatch(setWeather(weather))
+    setWeather: weather => dispatch(setWeather(weather)),
+    switchOff: () => dispatch(switchOff())
   }
 }
 

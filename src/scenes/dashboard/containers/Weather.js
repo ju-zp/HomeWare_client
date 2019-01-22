@@ -2,60 +2,99 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Skycons from 'react-skycons'
 
+import { Typography, withStyles } from '@material-ui/core'
+
+const styles = {
+    title: {
+        fontSize: '25px',
+        color: '#004857',
+        marginLeft: '5%',
+        marginTop: '2%'
+    },
+    listItem: {
+        fontSize: '15px',
+        color: '#004857',
+        listStyleType: 'none'
+    }, 
+    link: {
+        fontSize: '20px',
+        color: '#004857',
+        marginLeft: '5%',
+        marginTop: '2%'
+    }
+}
+
 class Weather extends Component {
 
     parseIcon = str => {
         return str.replace(/-/g, '_').toUpperCase()
     }
 
-    renderWeather = () => {
+    render(){
         const { currently } = this.props.weather
-        return <div>
+        const { classes } = this.props
+        return <div className='weatherContainer'>
+        {currently ? 
             <div className='weatherContent'>
-                <h4>Summary:</h4>
+                <Typography className={classes.title}>
+                    Weather
+                </Typography>
+                <br></br>
+                <Typography className={classes.title}>
+                    Summary:
+                </Typography>
                 <ul>
-                    <li>
-                        <h4>{currently.summary}</h4>
+                    <li className={classes.listItem}>
+                        {currently.summary}
                     </li>
                 </ul>
-                <h4>Temperature:</h4>
+                <Typography className={classes.title}>
+                    Temperature:
+                </Typography>
                 <ul>
-                    <li>
-                        <h4>Actual: {currently.temperature}C</h4>
+                    <li className={classes.listItem}>
+                        Actual: {currently.temperature}C
                     </li>
-                    <li>
-                        <h4>Feels like: {currently.apparentTemperature}C</h4>
+                    <li className={classes.listItem}>
+                        Feels like: {currently.apparentTemperature}C
                     </li>
                 </ul>
-                <h4>Humidity:</h4>
+                <Typography className={classes.title}>
+                    Humidity:
+                </Typography>
                 <ul>
-                    <li>
-                        <h4>{currently.humidity}%</h4>
+                    <li className={classes.listItem}>
+                        {currently.humidity}%
                     </li>
                 </ul>
-                <h4>Visibility:</h4>
+                <Typography className={classes.title}>
+                    Visibility:
+                </Typography>
                 <ul>
-                    <li>
-                        <h4>{currently.visibility} KM</h4>
+                    <li className={classes.listItem}>
+                        {currently.visibility} KM
                     </li>
                 </ul>
-                <a href='https://darksky.net/poweredby/' target='_blank' rel="noopener noreferrer"><h4>Powered by Dark Sky</h4></a>  
+                <a className={classes.title} 
+                    href='https://darksky.net/poweredby/' 
+                    target='_blank' rel="noopener noreferrer"
+                    >
+                    <Typography className={classes.link}>
+                        Powered by Dark Sky
+                    </Typography>
+                </a> 
             </div>
+            : null
+        }
+        {currently ? 
             <div className='icon'>
-                <Skycons color='black'
+                <Skycons color = '#004857'
                     icon={this.parseIcon(currently.icon)}
                     autoplay={true}
                 />
             </div>
-        </div>
-    }
-
-    render(){
-        return <div className='weatherContainer'>
-            <h3>Weather</h3>
-            {this.props.weather.currently 
-            ? this.renderWeather()
-            : null}
+            :null
+        }
         </div>
     }
 }
@@ -66,4 +105,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Weather)
+export default connect(mapStateToProps)(withStyles(styles)(Weather))

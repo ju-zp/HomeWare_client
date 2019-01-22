@@ -8,7 +8,7 @@ import Slider from '@material-ui/lab/Slider'
 
 const styles = () => ({
     slider: {
-        width: 300,
+       
         left: '30%'
     }
 })
