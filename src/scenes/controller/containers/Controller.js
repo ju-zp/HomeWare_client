@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { Typography, withStyles } from '@material-ui/core'
+
 import { switchOn, switchOff, setColor} from '../../../actions/actions'
 
 import LightSwitch from '../components/LightSwitch';
@@ -8,6 +10,14 @@ import ColorSettings from '../components/ColorSettings';
 import Temperature from '../components/Temperature';
 import HardwareAPI from '../../../APIs/HardwareAPI'
 import API from '../../../APIs/API'
+
+const styles = {
+    title: {
+        fontSize: '35px',
+        color: '#004857',
+        textAlign: 'center'
+    }
+}
 
 
 class Controller extends Component {
@@ -74,9 +84,10 @@ class Controller extends Component {
     render(){
         const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature, hideSave } = this
         const { save, colors } = this.state
-        const { light } = this.props
+        const { light, classes } = this.props
         return <div className='app'>
         <div className="controller">
+            <Typography className={classes.title}>Controller</Typography>
             <LightSwitch handleSwitch={handleSwitch} value={light}/>
             <ColorSettings handleSlider={handleSlider}
                 colors={colors}
@@ -107,4 +118,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Controller)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Controller))

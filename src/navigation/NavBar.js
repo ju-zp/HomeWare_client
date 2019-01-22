@@ -76,11 +76,12 @@ class NavBar extends Component {
                 <AppBar style={{backgroundColor: '#004857'}}
                     showMenuIconButton={false}>
                     <Toolbar className={'navMenu'}>
-                        <IconButton className={classes.menuButton}aria-label="Menu">
+                        <IconButton className={classes.menuButton}
+                            aria-label="Menu"
+                            >
                             <MenuIcon onClick={handleClick} />
                         </IconButton>
                         <Menu id='menu-appbar'
-                        className={classes.menuItems} 
                             anchorEl={anchorEl}
                             anchorOrigin={{
                                 vertical: 'top',
@@ -89,16 +90,23 @@ class NavBar extends Component {
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
-                              }}
-                              open={open}
-                              onClose={this.handleClose}
+                            }}
+                            open={open}
+                            onClose={this.handleClose}
                             >
-                            <MenuItem className={classes.selected} onClick={this.handleSelected} value={0}>Controller</MenuItem>
-                            <MenuItem className={classes.selected} onClick={this.handleSelected} value={1}>Dashboard</MenuItem>
+                            <MenuItem className={classes.selected} 
+                                onClick={this.handleSelected} 
+                                value={0}
+                                >Controller
+                            </MenuItem>
+                            <MenuItem className={classes.selected} 
+                                onClick={this.handleSelected} 
+                                value={1}
+                                >Dashboard
+                            </MenuItem>
                         </Menu>
-
                     </Toolbar>
-                    <Title title={page}/>
+                    <Title title='/Hou-Smart'/>
                     <Button className={classes.button}
                         onClick={logOut}
                         >
@@ -108,7 +116,7 @@ class NavBar extends Component {
                 :<AppBar
                     showMenuIconButton={false}
                     style={{backgroundColor: '#004857'}}
-                >
+                    >
                     <MainTitle />
                 </AppBar>}
                 
