@@ -78,8 +78,7 @@ class Environment extends Component {
         const { home, boards, users, classes } = this.props
         const { show } = this.state
         return <div className='environment'>
-            <Typography className={classes.title}>{home}
-            {/* <h1 className='homeTitle'>{home}</h1> */}
+            <Typography className={classes.title}>{home}</Typography>
             {show ? 
                 <HomeForm submit={handleSubmit} 
                     hideForm={hideForm}
@@ -87,7 +86,6 @@ class Environment extends Component {
                 : <Button className={classes.button}
                     variant='outlined'
                     onClick={handleClick}>Edit</Button>}
-            </Typography>
             <Users users={users} getUsers={getUsers}/>
             <BoardTabs boards={boards} boardEdit={handleBoardEdit}/>
         </div>
