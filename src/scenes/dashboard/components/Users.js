@@ -1,8 +1,33 @@
 import React, { Component } from 'react'
 
-import { Button } from '@material-ui/core';
+import { Button, withStyles, Typography } from '@material-ui/core';
 import UserForm from './UserForm'
 import API from '../../../APIs/API'
+
+const styles = {
+    title: {
+        fontSize: '25px',
+        color: '#004857'
+    },
+    listItem: {
+        fontSize: '15px',
+        color: '#004857',
+        listStyleType: 'none'
+    }, 
+    button: {
+        backgroundColor: '#004E59',
+        color: 'white',
+        marginTop: '1%',
+        marginLeft: '5%',
+        width: '150%',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
+    }
+}
 
 
 
@@ -29,17 +54,37 @@ class Users extends Component{
 
     render(){
         const { handleClick, handleShow, hideForm } = this
-        const { users } = this.props
+        const { users, classes } = this.props
         const { show } = this.state
         return <div className='usersContainer'>
-            <h3>Users: </h3>
+            <Typography className={classes.title}>Users:</Typography>
             <ul>
-                {users.map(u => <li key={u}>{u} <br></br>{u === 'admin' ? null : <Button onClick={() => handleClick(u)}>Delete</Button>}</li>)}
+                {users.map(u => <li key={u} 
+                        className={classes.listItem}
+                        >
+                        {u} 
+                        <br></br>
+                        {u === 'admin' 
+                            ? null 
+                            : <Button onClick={() => handleClick(u)}
+                                >
+                                Delete
+                            </Button>
+                        }
+                        </li>
+                )}
             </ul>
-            {show ? <UserForm hideForm={hideForm}/> : <Button onClick={handleShow}>Add Users</Button>}
-            
+            {show ? 
+                <UserForm hideForm={hideForm}/> 
+                : <Button className={classes.button}
+                    variant='outlined'
+                    onClick={handleShow}
+                    >
+                    Add Users
+                </Button>
+            }  
         </div>
     }
 }
 
-export default Users
+export default withStyles(styles)(Users)
