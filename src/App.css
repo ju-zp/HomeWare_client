@@ -50,7 +50,7 @@
 .weatherContainer {
   position: absolute;
   right: 4%;
-  top: 85%;
+  top: 100%;
   background-color: #D3D3D3;
   border-radius: 25px;
   width: 40%;
@@ -78,7 +78,7 @@
 .usersContainer {
   position: absolute;
   left: 60%;
-  top: 19%;
+  top: 30%;
 }
 
 .boardTabs {
@@ -104,26 +104,6 @@
 
 .controllerText {
   font-size: 20;
-}
-
-.loginLink {
-  margin-top: 10%;
-  text-align: center;
-}
-
-.loginLink a {
-  color: white;
-  text-decoration: none;
-  border: 1px solid #fff;
-  padding: 7px 30px;
-  border-radius: 3px;
-}
-
-.loginLink a:hover {
-  color: #004E59;
-  border-color: #004E59;
-  background-color: white;
-  transition: background-color 0.5s ease;
 }
 
 
