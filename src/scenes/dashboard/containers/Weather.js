@@ -15,6 +15,12 @@ const styles = {
         fontSize: '15px',
         color: '#004857',
         listStyleType: 'none'
+    }, 
+    link: {
+        fontSize: '20px',
+        color: '#004857',
+        marginLeft: '5%',
+        marginTop: '2%'
     }
 }
 
@@ -69,16 +75,26 @@ class Weather extends Component {
                         {currently.visibility} KM
                     </li>
                 </ul>
-                <a className={classes.title} href='https://darksky.net/poweredby/' target='_blank' rel="noopener noreferrer"><h4>Powered by Dark Sky</h4></a> 
-                
-                </div>
-        : null}
-        {currently? <div className='icon'>
+                <a className={classes.title} 
+                    href='https://darksky.net/poweredby/' 
+                    target='_blank' rel="noopener noreferrer"
+                    >
+                    <Typography className={classes.link}>
+                        Powered by Dark Sky
+                    </Typography>
+                </a> 
+            </div>
+            : null
+        }
+        {currently ? 
+            <div className='icon'>
                 <Skycons color = '#004857'
                     icon={this.parseIcon(currently.icon)}
                     autoplay={true}
                 />
-            </div>:null}
+            </div>
+            :null
+        }
         </div>
     }
 }
