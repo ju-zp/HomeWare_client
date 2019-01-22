@@ -6,7 +6,7 @@
 
 .mainTitle {
   color: white;
-  margin-right: 45%;
+  margin-right: 47%;
 }
 
 .navMenu {
@@ -15,7 +15,7 @@
 
 .title {
   color: white;
-  margin-right: 39%
+  margin-right: 38%
 }
 
 .form {
@@ -67,8 +67,8 @@
 
 .icon {
   margin-left: 10%;
-  width: 450px;
-  height: 250px;
+  width: 65%;
+  height: 40%;
 }
 
 .homeTitle {
@@ -106,39 +106,7 @@
   font-size: 20;
 }
 
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
-}
-
-@keyframes fadeInOut {}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
