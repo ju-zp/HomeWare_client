@@ -1,7 +1,7 @@
 .app {
   text-align: center;
-   color: white;
-   animation: fadein 2s;
+  color: white;
+  animation: fadein 2s;
 }
 
 .mainTitle {
@@ -139,6 +139,7 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
 
 @keyframes App-logo-spin {
   from {

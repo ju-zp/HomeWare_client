@@ -61,7 +61,6 @@ class Controller extends Component {
         const color = {...this.props.color, name} 
         API.saveColor(color, localStorage.username)
             .then(data => this.setState({save: false, colors: data.colors}))
-        // this.setState({save: false, colors: API.getColors(localStorage.username)})
     }
 
     getTemperature = () => {
@@ -72,7 +71,8 @@ class Controller extends Component {
         const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature } = this
         const { save, colors } = this.state
         const { light } = this.props
-        return <div className="controller">
+        return <div className='app'>
+        <div className="controller">
             <LightSwitch handleSwitch={handleSwitch} value={light}/>
             <ColorSettings handleSlider={handleSlider}
                 colors={colors}
@@ -81,6 +81,7 @@ class Controller extends Component {
                 save={handleSave}
                 />
             <Temperature getTemperature={getTemperature}/>
+        </div>
         </div>
     }
 }
