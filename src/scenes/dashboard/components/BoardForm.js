@@ -42,10 +42,20 @@ class BoardForm extends Component {
             <TextField label='name'
                 name='name'
                 onChange={handleChange}
-                />
+            />
             <br></br>
-            <Button className={classes.button} variant='outlined'onClick={handleClick}>Submit</Button>
-            <Button className={classes.button} variant='outlined'onClick={() => this.props.hideForm()}>Cancel</Button>
+            <Button className={classes.button} 
+                variant='outlined'
+                onClick={handleClick}
+                >
+                Submit
+            </Button>
+            <Button className={classes.button} 
+                variant='outlined'
+                onClick={() => this.props.hideForm()}
+                >
+                Cancel
+            </Button>
         </div>
     }
 }
