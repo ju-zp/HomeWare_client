@@ -67,8 +67,12 @@ class Controller extends Component {
         HardwareAPI.getTemperature()
     }
 
+    hideSave = () => {
+        this.setState({save: false})
+    }
+
     render(){
-        const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature } = this
+        const { handleSwitch, handleSlider, handleSaveClick, handleSave, getTemperature, hideSave } = this
         const { save, colors } = this.state
         const { light } = this.props
         return <div className='app'>
@@ -78,6 +82,7 @@ class Controller extends Component {
                 colors={colors}
                 handleSave={handleSaveClick}
                 showSave={save}
+                hideSave={hideSave}
                 save={handleSave}
                 />
             <Temperature getTemperature={getTemperature}/>

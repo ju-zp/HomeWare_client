@@ -60,7 +60,7 @@ class ColorSetting extends Component {
     }
 
     render(){
-        const { classes, handleSlider, handleSave, showSave, save, colors } = this.props
+        const { classes, handleSlider, handleSave, showSave, save, colors, hideSave } = this.props
         const { handleChange } = this
         return <div>
             <Typography className={classes.title}>
@@ -90,8 +90,9 @@ class ColorSetting extends Component {
             <ColorSlider handleSlider={handleSlider} colorName="green"/>
             </div>
             {showSave 
-                ? <SaveForm save={save}/>
-                : <Button className={classes.button} variant='outlined'
+                ? <SaveForm save={save} hideSave={hideSave}/>
+                : <Button className={classes.button} 
+                    variant='outlined'
                     onClick={handleSave}
                     >Save
                 </Button>}
