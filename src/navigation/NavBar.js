@@ -34,7 +34,7 @@ const styles = {
     selected: {
         color: '#004E59',
         '&:hover': {
-            color: '#D3D3D3',
+            color: 'white',
             backgroundColor: '#004E59',
             transition: 'background-color 0.5s ease'
         }
@@ -67,7 +67,7 @@ class NavBar extends Component {
     }
 
     render(){
-        const { username, logOut, page, classes} = this.props
+        const { username, logOut, classes} = this.props
         const {handleClick} = this
         const { anchorEl } = this.state
         const open = Boolean(anchorEl)

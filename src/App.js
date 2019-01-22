@@ -65,7 +65,7 @@ class App extends Component {
         .then(resp => {
           if(!resp.error){
             this.logIn(username)
-            this.props.setPage('/controller')
+            this.props.setPage('/dashboard')
             this.setState({ redirect: true })
           }
         })

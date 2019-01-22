@@ -86,21 +86,20 @@ class Controller extends Component {
         const { save, colors } = this.state
         const { light, classes } = this.props
         return <div className='app'>
-        <div className="controller">
-            <Typography className={classes.title}>Controller</Typography>
-            {/* <br></br> */}
-            <LightSwitch handleSwitch={handleSwitch} value={light}/>
-            <br></br>
-            <ColorSettings handleSlider={handleSlider}
-                colors={colors}
-                handleSave={handleSaveClick}
-                showSave={save}
-                hideSave={hideSave}
-                save={handleSave}
-                />
-            <br></br>
-            <Temperature getTemperature={getTemperature}/>
-        </div>
+            <div className="controller">
+                <Typography className={classes.title}>Controller</Typography>
+                <LightSwitch handleSwitch={handleSwitch} value={light}/>
+                <br></br>
+                <ColorSettings handleSlider={handleSlider}
+                    colors={colors}
+                    handleSave={handleSaveClick}
+                    showSave={save}
+                    hideSave={hideSave}
+                    save={handleSave}
+                    />
+                <br></br>
+                <Temperature getTemperature={getTemperature}/>
+            </div>
         </div>
     }
 }

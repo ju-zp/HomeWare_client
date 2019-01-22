@@ -1,12 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Button } from '@material-ui/core'
+import { Button, Typography, withStyles } from '@material-ui/core'
 import BoardTabs from '../components/BoardTabs'
 import Users from '../components/Users'
 import HomeForm from '../components/HomeForm'
 import { setHome, setBoards, setUsers} from '../../../actions/actions'
 import API from '../../../APIs/API'
+
+const styles = {
+    title: {
+        fontSize: '35px',
+        color: '#004857',
+        marginLeft: '5%'
+    },
+    button: {
+        backgroundColor: '#004E59',
+        color: 'white',
+        marginTop: '1%',
+        marginLeft: '5%',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
+    }
+}
 
 
 
@@ -55,11 +75,19 @@ class Environment extends Component {
 
     render(){
         const { getUsers, handleClick, handleSubmit, hideForm, handleBoardEdit } = this
-        const { home, boards, users } = this.props
+        const { home, boards, users, classes } = this.props
         const { show } = this.state
-        return <div className='environment'>  
-            <h1 className='homeTitle'>{home}</h1>
-            {show ? <HomeForm submit={handleSubmit} hideForm={hideForm}/> : <Button onClick={handleClick}>Edit</Button>}
+        return <div className='environment'>
+            <Typography className={classes.title}>{home}
+            {/* <h1 className='homeTitle'>{home}</h1> */}
+            {show ? 
+                <HomeForm submit={handleSubmit} 
+                    hideForm={hideForm}
+                    /> 
+                : <Button className={classes.button}
+                    variant='outlined'
+                    onClick={handleClick}>Edit</Button>}
+            </Typography>
             <Users users={users} getUsers={getUsers}/>
             <BoardTabs boards={boards} boardEdit={handleBoardEdit}/>
         </div>
@@ -83,4 +111,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Environment)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Environment))

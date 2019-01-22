@@ -29,7 +29,7 @@ class Users extends Component{
 
     render(){
         const { handleClick, handleShow, hideForm } = this
-        const { users, getUsers } = this.props
+        const { users } = this.props
         const { show } = this.state
         return <div className='usersContainer'>
             <h3>Users: </h3>

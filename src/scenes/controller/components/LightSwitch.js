@@ -15,15 +15,14 @@ const styles = () => ({
 
 const LightSwitch = ({ classes, handleSwitch, value }) => {
     return <div>
-        <br></br>
         <Typography className={classes.title}>Light</Typography>
         <Typography className={classes.text}>
-        Switch
-        <Switch color="primary" 
-            checked={value} 
-            onChange={(e,c) => handleSwitch(c)}>
-        </Switch>
-    </Typography>
+            Switch
+            <Switch color="primary" 
+                checked={value} 
+                onChange={(e,c) => handleSwitch(c)}>
+            </Switch>
+        </Typography>
     </div>
 }
 
