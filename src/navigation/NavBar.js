@@ -7,8 +7,39 @@ import { setPage } from '../actions/actions'
 
 import MainTitle from './components/MainTitle'
 import Title from './components/Title'
-import { Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core';
+import { Toolbar, IconButton, Menu, MenuItem, withStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+
+const styles = {
+    menuButton: {
+        color: 'white',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
+    },
+    button: {
+        backgroundColor: '#004857',
+        color: 'white',
+        marginRight: '1%',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
+    },
+    selected: {
+        color: '#004E59',
+        '&:hover': {
+            color: '#D3D3D3',
+            backgroundColor: '#004E59',
+            transition: 'background-color 0.5s ease'
+        }
+    }
+}
 
 
 
@@ -36,7 +67,7 @@ class NavBar extends Component {
     }
 
     render(){
-        const { username, logOut, page} = this.props
+        const { username, logOut, page, classes} = this.props
         const {handleClick} = this
         const { anchorEl } = this.state
         const open = Boolean(anchorEl)
@@ -45,10 +76,11 @@ class NavBar extends Component {
                 <AppBar style={{backgroundColor: '#004857'}}
                     showMenuIconButton={false}>
                     <Toolbar className={'navMenu'}>
-                        <IconButton color="inherit" aria-label="Menu">
+                        <IconButton className={classes.menuButton}aria-label="Menu">
                             <MenuIcon onClick={handleClick} />
                         </IconButton>
                         <Menu id='menu-appbar'
+                        className={classes.menuItems} 
                             anchorEl={anchorEl}
                             anchorOrigin={{
                                 vertical: 'top',
@@ -61,13 +93,17 @@ class NavBar extends Component {
                               open={open}
                               onClose={this.handleClose}
                             >
-                            <MenuItem onClick={this.handleSelected} value={0}>Controller</MenuItem>
-                            <MenuItem onClick={this.handleSelected} value={1}>Dashboard</MenuItem>
+                            <MenuItem className={classes.selected} onClick={this.handleSelected} value={0}>Controller</MenuItem>
+                            <MenuItem className={classes.selected} onClick={this.handleSelected} value={1}>Dashboard</MenuItem>
                         </Menu>
 
                     </Toolbar>
                     <Title title={page}/>
-                    <Button style={{color: 'white'}} onClick={logOut}>LogOut</Button>
+                    <Button className={classes.button}
+                        onClick={logOut}
+                        >
+                        LogOut
+                    </Button>
                 </AppBar>
                 :<AppBar
                     showMenuIconButton={false}
@@ -93,4 +129,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NavBar))
