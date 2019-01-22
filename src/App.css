@@ -86,8 +86,15 @@
 }
 
 .controller {
-  text-align: center;
-  margin-top: 5%;
+  position: absolute;
+  top: 20%;
+  left: 27%;
+  width: 40%;
+  background-color: #D3D3D3;
+  border-radius: 25px;
+  margin: 2%;
+  border: 3px solid #004857;
+  padding: 10px;
 }
 
 .controllerText {
@@ -140,6 +147,7 @@
   to   { opacity: 1; }
 }
 
+@keyframes fadeInOut {}
 
 @keyframes App-logo-spin {
   from {

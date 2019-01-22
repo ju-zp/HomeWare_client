@@ -4,7 +4,8 @@ import { Typography, withStyles, Switch } from '@material-ui/core';
 const styles = () => ({
     text: {
         fontSize: '20px',
-        color: 'white'
+        color: '#004857',
+
     }
     
 })
