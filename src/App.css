@@ -97,6 +97,10 @@
   padding: 10px;
 }
 
+.sliders {
+  width: 300px;
+}
+
 .controllerText {
   font-size: 20;
 }

@@ -10,18 +10,32 @@ import HardwareAPI from '../../../APIs/HardwareAPI'
 const styles = () => ({
     title: {
         fontSize: '25px',
-        color: 'white',
+        color: '#004857',
         textAlign: 'center'
     },
     text: {
         fontSize: '20px',
+        color: '#004857',
+        marginRight: '20%'
+    }, 
+    button: {
+        backgroundColor: '#004E59',
         color: 'white',
-        textAlign: 'center'
+        marginTop: '5%',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
     }
-    
 })
 
 class ColorSetting extends Component {
+
+    state = {
+        value: ""
+    }
 
     handleChange = e => {
         let color
@@ -42,6 +56,7 @@ class ColorSetting extends Component {
         if(this.props.light){
             HardwareAPI.setColor(color)
         }
+        this.setState({value: e.target.value})
     }
 
     render(){
@@ -52,25 +67,34 @@ class ColorSetting extends Component {
                 Color Settings
             </Typography>
             {colors.length > 0 
-                ? <Select value="color"
+                ? <Select value={this.state.value}
                     onChange={e => handleChange(e)}>
                     <MenuItem value="">--None--</MenuItem>
                     {colors.map(c => <MenuItem key={c.id} value={c}>{c.name}</MenuItem>)}
                 </Select>
                 : null }
-            <Typography className={classes.text}>
+            <div className="sliders">
+            <Typography id='label' className={classes.text}>
                 Red
             </Typography>
             <ColorSlider handleSlider={handleSlider} colorName="red"/>
+            <br></br>
             <Typography className={classes.text}>
                 Blue
             </Typography>
             <ColorSlider handleSlider={handleSlider} colorName="blue"/>
+            <br></br>
             <Typography className={classes.text}>
                 Green
             </Typography>
             <ColorSlider handleSlider={handleSlider} colorName="green"/>
-            {showSave ? <SaveForm save={save}/>: <Button onClick={handleSave}>Save</Button>}
+            </div>
+            {showSave 
+                ? <SaveForm save={save}/>
+                : <Button className={classes.button} variant='outlined'
+                    onClick={handleSave}
+                    >Save
+                </Button>}
         </div>
     }
 }

@@ -5,15 +5,16 @@ const styles = () => ({
     text: {
         fontSize: '20px',
         color: '#004857',
-
-    }
-    
+    }  
 })
 
 const LightSwitch = ({ classes, handleSwitch, value }) => {
     return <Typography className={classes.text}>
         Light Switch
-        <Switch checked={value} onChange={(e,c) => handleSwitch(c)}></Switch>
+        <Switch color="primary" 
+            checked={value} 
+            onChange={(e,c) => handleSwitch(c)}>
+        </Switch>
     </Typography>
 }
 
