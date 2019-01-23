@@ -1,68 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hou-Smart Client
 
-## Available Scripts
+![alt text](https://github.com/ju-zp/Hou-Smart_client/blob/master/public/Screenshot.png 'controller')
 
-In the project directory, you can run:
+### Introduction
 
-### `npm start`
+A React frontend used to interact with [Hou-Smart Server](https://github.com/ju-zp/Hou-Smart_server) and [Hou-Smart Hardware](https://github.com/ju-zp/Hou-Smart_hardware). This project focuses on intergration of IoT into the browser. Bcrypt is used for authentication of users. Upon logging in the user is redirected to the controller page. This is used to controller Arduino hardware running on an express server. Providing that users have the same hardware connected at the correct pins, they have the ability to switch an RGB LED on and off, set colors for the LED and save them to their particular account. They are also able to get their current temperature displayed on the LCD screen. Information about the hardware can be found in the link above. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A user can then navigate to their dashboard via the menu in the navbar. From within the dashboard they can edit the name of their home environment and also the name of boards. The home is meant to represent an actual home, and the boards are meant to represent rooms within the home. They can check the status of the hardware connected to the board, e.i. LED is on/off. More users can be added from the dashboard and is the only way to add new users, more details on the server can be found from the link above. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Users also have the ability to monitor the temperature of the environment which is displayed in a graph. They can see the temperature of the environment for the last 15 minutes and for the last hour. There is also a weather section which uses Dark Sky API and gets information about the current weather and displays it to the user. 
 
-### `npm test`
+### Technologies
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* React
+* Redux
+* Victory
+* Material-UI
+* Dark Sky API
