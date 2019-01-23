@@ -26,6 +26,18 @@ const styles = {
             backgroundColor: '#D3D3D3',
             transition: 'background-color 0.5s ease'
         }
+    },
+    delete: {
+        backgroundColor: '#004E59',
+        color: 'white',
+        marginTop: '1%',
+        marginLeft: '50%',
+        '&:hover': {
+            color: '#004E59',
+            borderColor: '#004E59',
+            backgroundColor: '#D3D3D3',
+            transition: 'background-color 0.5s ease'
+        }
     }
 }
 
@@ -62,11 +74,12 @@ class Users extends Component{
                 {users.map(u => <li key={u} 
                         className={classes.listItem}
                         >
+
                         {u} 
-                        <br></br>
                         {u === 'admin' 
                             ? null 
-                            : <Button onClick={() => handleClick(u)}
+                            : <Button className={classes.delete} variant='outlined' onClick={() => handleClick(u)}
+
                                 >
                                 Delete
                             </Button>
